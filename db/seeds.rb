@@ -29,10 +29,9 @@ user2 = User.create!(
   password: 'topsecret'
   )
 
-
  trip1 = Trip.create!(
     transport: 0,
-    start_time: 15,
+    start_time: Time.now + 15*60,
     start_lat: 48.862725,
     start_long: 2.287592000000018,
     end_address: "54 Rue de New York, Bordeaux, Nouvelle-Aquitaine, France",
@@ -42,7 +41,7 @@ user2 = User.create!(
 
 trip2 = Trip.create!(
     transport: 1,
-    start_time: 30,
+    start_time: Time.now + 30*60,
     start_lat: 44.852,
     start_long: -0.5725869999999986,
     end_address: "Cours de la Martinique, 33000 Bordeaux, France",
@@ -52,7 +51,7 @@ trip2 = Trip.create!(
 
 trip3 = Trip.create!(
     transport: 2,
-    start_time: 15,
+    start_time: Time.now + 15*60,
     start_lat: 44.855684373859944,
     start_long: -0.5744621157646179,
     end_address: "47 Rue Minvielle, Bordeaux, Nouvelle-Aquitaine, France",
@@ -77,10 +76,10 @@ booking2 = Booking.create!(
 )
 
 booking2 = Booking.create!(
-    user: user3,
+    user: user2,
     trip: trip3,
     creator: false,
-    progress:0,
+    progress: 0,
     state: 0
 )
 
