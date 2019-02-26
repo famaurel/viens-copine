@@ -1,0 +1,60 @@
+.latte {
+  display: flex;
+  align-items: top;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  border-radius: 5px;
+  position: relative;
+}
+
+.latte .latte-content {
+  // flex-grow: 1;
+  padding: 0 17px;
+}
+
+.latte p {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.latte .small {
+  color: #999999;
+}
+
+.latte .latte-info {
+  opacity: 1;
+  display: flex;
+  transition: ease .3s;
+}
+
+.latte:hover .latte-info {
+  opacity: 1;
+}
+
+.latte .latte-info a {
+  color: $purple;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.latte .latte-info a:hover {
+  color: #555555;
+}
+
+.latte .stars {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  color: $yellow;
+  font-size: 20px;
+}
+
+.latte .category {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 25px;
+}
+

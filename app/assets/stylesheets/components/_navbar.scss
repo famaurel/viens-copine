@@ -2,8 +2,8 @@
   background-color:transparent!important;
   position: fixed;
   width: 100%;
-  z-index: 1;
-  a{
+  // z-index: 1;
+  a {
     color: white!important;
     font-size: 18px;
     border:none;
@@ -39,4 +39,8 @@
     display: block;
     padding: 0.25em 0em;
   }
+}
+
+.navbar-top {
+  height: 56px;
 }

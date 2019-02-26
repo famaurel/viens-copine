@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2019_02_26_130758) do
 
   create_table "bookings", force: :cascade do |t|
     t.boolean "creator", default: false
-    t.string "progress"
-    t.string "state"
+    t.integer "progress", default: 0
+    t.integer "state", default: 0
     t.bigint "user_id"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_02_26_130758) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "transport"
-    t.string "start_time"
+    t.integer "transport"
+    t.integer "start_time"
     t.string "start_lat"
     t.string "start_long"
     t.string "end_address"
