@@ -3,8 +3,14 @@
       <div class="banner-inner">
         <h1>Viens copine</h1>
         <p>Rentre chez toi en sécurité</p>
-        <button class="btn btn-primary">S'inscrire</button>
+        <% unless current_user %>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        <% else %>
+          <%= current_user[:name] %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% end %>
       </div>
     </div>
   </div>
+
 

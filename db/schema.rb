@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_103112) do
+ActiveRecord::Schema.define(version: 2019_02_26_130758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.boolean "creator", default: false
-    t.string "progress"
-    t.string "state"
+    t.integer "progress", default: 0
+    t.integer "state", default: 0
     t.bigint "user_id"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_02_26_103112) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "transport"
-    t.string "start_time"
+    t.integer "transport"
+    t.integer "start_time"
     t.string "start_lat"
     t.string "start_long"
     t.string "end_address"
@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 2019_02_26_103112) do
     t.string "cni"
     t.string "photo"
     t.string "visio_url"
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.text "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
