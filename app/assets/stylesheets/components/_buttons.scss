@@ -2,6 +2,17 @@
   color: white;
   background: linear-gradient(-90deg,$yellow 5%,$orange 100%);
   padding: 1em 2em;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
+}
+
+.btn-facebook{
+  color: white;
+  background-color:$blue-facebook;
+  padding: 1em 2em;
+  font-weight: bold;
+  border:none;
+  p{
+    margin: 0;
+  }
 }
