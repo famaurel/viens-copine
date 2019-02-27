@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+
   def search
   end
 
@@ -15,6 +16,7 @@ class TripsController < ApplicationController
       render :new
     end
   end
+end
 
   private
 

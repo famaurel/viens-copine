@@ -1,11 +1,11 @@
 .navbar-vc{
-  background-color:transparent!important;
   position: fixed;
   width: 100%;
-  // z-index: 1;
+  z-index: 1;
   a {
     color: white!important;
     font-size: 18px;
+    border:none;
   }
 }
 
@@ -34,7 +34,7 @@
   a{
     font-size: 16px;
     font-weight: bold;
-    color:$gray;
+    color:$gray!important;
     display: block;
     padding: 0.25em 0em;
   }

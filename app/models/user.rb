@@ -2,10 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :bookings
-  devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable,
-  :omniauthable, :omniauth_providers => [:facebook]
+  has_many :trips, through: :bookings
+  has_many :reviews, through: :bookings
+  has_many :my_reviews, source: :reviews
 
+  mount_uploader :photo, PhotoUploader
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+  after_create :split_name
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -23,4 +26,21 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def average_rating
+    ratings = []
+    reviews = self.reviews
+    reviews.each do |review|
+      ratings << review.rating
+    end
+    ratings.sum / ratings.length
+  end
+
+  def split_name
+    if self.name != nil
+        arr = []
+        arr = self.name.split
+        self.update(first_name: arr.first, last_name: arr.last)
+     end
+   end
 end

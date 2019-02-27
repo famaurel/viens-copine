@@ -11,15 +11,6 @@ Review.destroy_all
 Booking.destroy_all
 Trip.destroy_all
 
-user1 = User.create!(
-  first_name: 'Kathy',
-  last_name: 'Doe',
-  address: '107 cours Balguerie Stuttenberg 33300 Bordeaux',
-  category: 'fêtarde',
-  email: 'kathy@kathy.com',
-  password: 'topsecret'
-  )
-
 user2 = User.create!(
   first_name: 'Claudia',
   last_name: 'Doedoe',
@@ -29,10 +20,9 @@ user2 = User.create!(
   password: 'topsecret'
   )
 
-
  trip1 = Trip.create!(
     transport: 0,
-    start_time: 15,
+    start_time: Time.now + 15*60,
     start_lat: 48.862725,
     start_long: 2.287592000000018,
     end_address: "54 Rue de New York, Bordeaux, Nouvelle-Aquitaine, France",
@@ -42,7 +32,7 @@ user2 = User.create!(
 
 trip2 = Trip.create!(
     transport: 1,
-    start_time: 30,
+    start_time: Time.now + 30*60,
     start_lat: 44.852,
     start_long: -0.5725869999999986,
     end_address: "Cours de la Martinique, 33000 Bordeaux, France",
@@ -52,7 +42,7 @@ trip2 = Trip.create!(
 
 trip3 = Trip.create!(
     transport: 2,
-    start_time: 15,
+    start_time: Time.now + 15*60,
     start_lat: 44.855684373859944,
     start_long: -0.5744621157646179,
     end_address: "47 Rue Minvielle, Bordeaux, Nouvelle-Aquitaine, France",
@@ -80,7 +70,27 @@ booking2 = Booking.create!(
     user: user2,
     trip: trip3,
     creator: false,
-    progress:0,
+    progress: 0,
     state: 0
 )
 
+review1 = Review.create!(
+  user: user1,
+  booking: booking1,
+  rating: 1,
+  content: 'topissime'
+  )
+
+review2 = Review.create!(
+  user: user2,
+  booking: booking2,
+  rating: 5,
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
+  )
+
+review3 = Review.create!(
+  user: user2,
+  booking: booking2,
+  rating: 3,
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
+  )

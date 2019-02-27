@@ -3,39 +3,32 @@
 
 
 <div class="container">
-  <div class="latte">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-    <div class="latte-content">
-      <p>Juliette</p>
-      <span class="small">Départ : 22h30</span>
-    </div>
-
-    <div class="latte-info">
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
+  <% @trips.each do |trip| %>
+    <div class="latte">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
+      <div class="latte-content">
+        <p><%= trip.bookings[0].user.first_name %></p>
+        <span class="small"> Départ : <%= Time.at(trip.start_time).hour %>h<%=Time.at(trip.start_time).min %></span>
       </div>
-      <i class="category fas fa-cocktail"></i>
-    </div>
-  </div>
 
-  <div class="latte">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-    <div class="latte-content">
-      <p>Sophia</p>
-      <span class="small">Départ : 23h05</span>
-    </div>
-
-    <div class="latte-info">
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
+      <div class="latte-info">
+        <div class="stars">
+          <% trip.bookings[0].user.average_rating.times do  %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+          <% category = trip.bookings[0].user.category %>
+              <% if category == 'fêtarde' %>
+                <i class="category fas fa-cocktail"></i>
+              <% else if category == 'calme'%>
+                <i class="category fas fa-glass-whiskey"></i>
+              <% else %>
+                <i class="category fas fa-wine-glass-alt"></i>
+              <% end %>
+        <% end %>
       </div>
-      <i class="category fas fa-cocktail"></i>
     </div>
-  </div>
+  <% end %>
 </div>
 
 
