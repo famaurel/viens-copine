@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :bookings
   has_many :trips, through: :bookings
+  has_many :reviews, through: :bookings
+  has_many :my_reviews, source: :reviews
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -22,4 +24,14 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def average_rating
+    ratings = []
+    reviews = self.reviews
+    reviews.each do |review|
+      ratings << review.rating
+    end
+    ratings.sum / ratings.length
+  end
+
 end

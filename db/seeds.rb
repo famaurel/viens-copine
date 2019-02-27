@@ -86,7 +86,7 @@ booking2 = Booking.create!(
 review1 = Review.create!(
   user: user1,
   booking: booking1,
-  rating: 4,
+  rating: 1,
   content: 'topissime'
   )
 

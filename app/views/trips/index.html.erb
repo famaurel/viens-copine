@@ -9,13 +9,19 @@
 
       <div class="latte-info">
         <div class="stars">
-          <%=  %>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+          <% trip.bookings[0].user.average_rating.times do  %>
+            <i class="fas fa-star"></i>
+          <% end %>
         </div>
-        <i class="category fas fa-cocktail"></i>
+          <% category = trip.bookings[0].user.category %>
+              <% if category == 'fêtarde' %>
+                <i class="category fas fa-cocktail"></i>
+              <% else if category == 'calme'%>
+                <i class="category fas fa-glass-whiskey"></i>
+              <% else %>
+                <i class="category fas fa-wine-glass-alt"></i>
+              <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
