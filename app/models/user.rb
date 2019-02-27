@@ -2,10 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  has_many :bookings
-
-  :recoverable, :rememberable, :validatable,
+  has_many :bookings, :recoverable, :rememberable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook]
+  after_create :split_name
+
 
 
   def self.new_with_session(params, session)
@@ -24,5 +24,15 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+
+  def split_name
+      if self.name != nil
+        arr = []
+        arr = self.name.split
+        self.update(first_name: arr.first, last_name: arr.last)
+      end
+    end
+
 
  end
