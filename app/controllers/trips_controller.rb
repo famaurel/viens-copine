@@ -1,11 +1,12 @@
 class TripsController < ApplicationController
 
-  def search
-  end
-
   def index
+    @trips = Trip.all
     @trip = Trip.new
     @trips = Trip.all
+  end
+
+  def search
   end
 
   def create
@@ -22,13 +23,11 @@ class TripsController < ApplicationController
     end
   end
 
-
   private
 
   def trip_params
     # params[:transport] = params[:transport].to_i
     params.require(:trip).permit(:transport, :start_time, :end_address, :started, :created_at, :updated_at)
-
   end
 
 end

@@ -11,7 +11,7 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 
-gem 'font-awesome-sass', '~> 5.5.0'
+gem 'font-awesome-sass', '~> 5.6.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
@@ -19,8 +19,6 @@ gem 'webpacker'
 gem 'omniauth-facebook'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'

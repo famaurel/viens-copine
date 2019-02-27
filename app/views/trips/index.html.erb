@@ -1,14 +1,11 @@
 
-
-
-
 <div class="container">
   <% @trips.each do |trip| %>
     <div class="latte">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
       <div class="latte-content">
         <p><%= trip.bookings[0].user.first_name %></p>
-        <span class="small"> Départ : <%= Time.at(trip.start_time).hour %>h<%=Time.at(trip.start_time).min %></span>
+        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
       </div>
 
       <div class="latte-info">
@@ -18,22 +15,17 @@
           <% end %>
         </div>
           <% category = trip.bookings[0].user.category %>
-              <% if category == 'fêtarde' %>
-                <i class="category fas fa-cocktail"></i>
-              <% else if category == 'calme'%>
-                <i class="category fas fa-glass-whiskey"></i>
-              <% else %>
-                <i class="category fas fa-wine-glass-alt"></i>
-              <% end %>
-        <% end %>
+          <% if category == 'fêtarde' %>
+            <i class="category fas fa-cocktail"></i>
+          <% elsif category == 'calme' %>
+            <i class="category fas fa-glass-whiskey"></i>
+          <% else %>
+            <i class="category fas fa-wine-glass-alt"></i>
+          <% end %>
       </div>
     </div>
   <% end %>
 </div>
-
-
-
-
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">Créer un trajet
 </button>
