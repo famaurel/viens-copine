@@ -29,7 +29,7 @@ user2 = User.create!(
   password: 'topsecret'
   )
 
- trip1 = Trip.create!(
+trip1 = Trip.create!(
     transport: 0,
     start_time: Time.now + 15*60,
     start_lat: 48.862725,
@@ -86,23 +86,20 @@ booking2 = Booking.create!(
 review1 = Review.create!(
   user: user1,
   booking: booking1,
-  rating: 4,
-  content: 'top'
-  )
+  rating: 1,
+  content: 'topissime'
+)
 
 review2 = Review.create!(
   user: user2,
   booking: booking2,
-  rating: 4,
-  content: 'Vellet conficiat si si quem si properat etiamsi fortuna aliud quid ego non eximia eximia.'
+  rating: 5,
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
   )
 
 review3 = Review.create!(
   user: user2,
   booking: booking2,
-  rating: 4,
-  content: 'everwurscht flammekueche suspendisse baeckeoffe geïz Spätzle Mauris hopla Carola Oberschaeffolsheim habitant non kartoffelsalad Strasbourg aliquam Salu bissame Verdammi Salut bisamme eget morbi condimentum id consectetur hoplageiss Kabinetpapier Pfourtz ! '
+  rating: 3,
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
   )
-
-
-
