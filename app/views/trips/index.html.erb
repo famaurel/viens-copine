@@ -1,3 +1,7 @@
+
+
+
+
 <div class="container">
   <div class="latte">
     <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
@@ -30,6 +34,39 @@
         <i class="fas fa-star"></i>
       </div>
       <i class="category fas fa-cocktail"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">Créer un trajet
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="testModalLabel">Je crée mon trajet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @trip do |f| %>
+        <%= f.input :transport, collection: Trip.transports.keys %>
+        <%= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
+        <%= f.input :end_address %>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit %>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

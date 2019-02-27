@@ -77,7 +77,7 @@ booking2 = Booking.create!(
 )
 
 booking2 = Booking.create!(
-    user: user3,
+    user: user2,
     trip: trip3,
     creator: false,
     progress:0,
