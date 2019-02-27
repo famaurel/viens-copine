@@ -5,18 +5,23 @@ class TripsController < ApplicationController
 
   def index
     @trip = Trip.new
+    @trips = Trip.all
   end
 
   def create
     @trip = Trip.new(trip_params)
-   @trip.user = current_user
    if @trip.save
+    @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
+    if @booking.save
     redirect_to trips_path
     else
-      render :new
+      render :index
+    end
+    else
+      render :index
     end
   end
-end
+
 
   private
 
@@ -24,7 +29,7 @@ end
     # params[:transport] = params[:transport].to_i
     params.require(:trip).permit(:transport, :start_time, :end_address, :started, :created_at, :updated_at)
 
-   end
+  end
 
 end
 
