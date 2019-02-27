@@ -83,3 +83,23 @@ booking2 = Booking.create!(
     state: 0
 )
 
+review1 = Review.create!(
+  user: user1,
+  trip: trip1,
+  rating: 4,
+  comment: 'topissime'
+  )
+
+review2 = Review.create!(
+  user: user2,
+  trip: trip2,
+  rating: 5,
+  comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
+  )
+
+review3 = Review.create!(
+  user: user2,
+  trip: trip3,
+  rating: 3,
+  comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
+  )
