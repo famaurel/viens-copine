@@ -29,11 +29,15 @@ class User < ApplicationRecord
 
   def average_rating
     ratings = []
+    if self.reviews[0] != nil
     reviews = self.reviews
     reviews.each do |review|
       ratings << review.rating
     end
     ratings.sum / ratings.length
+  else
+    0
+  end
   end
 
   def split_name
