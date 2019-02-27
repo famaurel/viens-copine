@@ -3,11 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :bookings
+  has_many :trips, through: :bookings
+  has_many :reviews, through: :bookings
+  has_many :my_reviews, source: :reviews
+
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   after_create :split_name
-
-
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -27,6 +29,16 @@ class User < ApplicationRecord
   end
 
 
+  def average_rating
+    ratings = []
+    reviews = self.reviews
+    reviews.each do |review|
+      ratings << review.rating
+    end
+    ratings.sum / ratings.length
+  end
+end
+
   def split_name
       if self.name != nil
         arr = []
@@ -34,6 +46,4 @@ class User < ApplicationRecord
         self.update(first_name: arr.first, last_name: arr.last)
       end
     end
-
-
  end
