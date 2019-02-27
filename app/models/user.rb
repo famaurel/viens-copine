@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
   has_many :bookings
   has_many :trips, through: :bookings
   has_many :reviews, through: :bookings
@@ -27,7 +26,6 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
-
 
   def average_rating
     ratings = []
