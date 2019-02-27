@@ -1,12 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
   has_many :bookings
+  has_many :trips, through: :bookings
 
-  :recoverable, :rememberable, :validatable,
-  :omniauthable, :omniauth_providers => [:facebook]
-
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -24,5 +22,4 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
-
- end
+end
