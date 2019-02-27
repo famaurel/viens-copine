@@ -37,13 +37,12 @@ class User < ApplicationRecord
     end
     ratings.sum / ratings.length
   end
-end
 
   def split_name
-      if self.name != nil
+    if self.name != nil
         arr = []
         arr = self.name.split
         self.update(first_name: arr.first, last_name: arr.last)
-      end
     end
- end
+  end
+end
