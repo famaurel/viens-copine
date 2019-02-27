@@ -15,8 +15,11 @@
         </button>
       </div>
       <div class="modal-body nav-modal-body">
-        <a href="">Sign up</a>
-        <a href="">Log in</a>
+      <% if  user_signed_in? %>
+      <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up",  new_user_registration_path %>
+      <% end %>
       </div>
     </div>
   </div>

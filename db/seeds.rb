@@ -11,15 +11,6 @@ Review.destroy_all
 Booking.destroy_all
 Trip.destroy_all
 
-user1 = User.create!(
-  first_name: 'Kathy',
-  last_name: 'Doe',
-  address: '107 cours Balguerie Stuttenberg 33300 Bordeaux',
-  category: 'fêtarde',
-  email: 'kathy@kathy.com',
-  password: 'topsecret'
-  )
-
 user2 = User.create!(
   first_name: 'Claudia',
   last_name: 'Doedoe',
