@@ -11,16 +11,25 @@ Review.destroy_all
 Booking.destroy_all
 Trip.destroy_all
 
+user1 = User.create!(
+  first_name: 'Kathy',
+  last_name: 'Doe',
+  address: '107 cours Balguerie Stuttenberg 33300 Bordeaux',
+  category: 'fêtarde',
+  email: 'kathy@kathy.com',
+  password: 'topsecret'
+  )
+
 user2 = User.create!(
   first_name: 'Claudia',
   last_name: 'Doedoe',
   address: '102 cours Balguerie Stuttenberg 33300 Bordeaux',
-  category: 'arsouille',
+  category: 'calme',
   email: 'claudia@claudia.com',
   password: 'topsecret'
   )
 
- trip1 = Trip.create!(
+trip1 = Trip.create!(
     transport: 0,
     start_time: Time.now + 15*60,
     start_lat: 48.862725,

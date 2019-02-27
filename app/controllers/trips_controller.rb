@@ -1,31 +1,29 @@
 class TripsController < ApplicationController
 
-  def search
+  def index
+    @trips = Trip.all
+    @trip = Trip.new
   end
 
-  def index
-    @trip = Trip.new
+  def search
   end
 
   def create
     @trip = Trip.new(trip_params)
-   @trip.user = current_user
-   if @trip.save
-    redirect_to trips_path
+    @trip.user = current_user
+    if @trip.save
+      redirect_to trips_path
     else
       render :new
     end
   end
-end
 
   private
 
   def trip_params
     # params[:transport] = params[:transport].to_i
     params.require(:trip).permit(:transport, :start_time, :end_address, :started, :created_at, :updated_at)
-
-   end
-
+  end
 end
 
 

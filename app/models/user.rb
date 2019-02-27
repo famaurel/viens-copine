@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      if data == session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
@@ -38,9 +38,9 @@ class User < ApplicationRecord
 
   def split_name
     if self.name != nil
-        arr = []
-        arr = self.name.split
-        self.update(first_name: arr.first, last_name: arr.last)
+      arr = []
+      arr = self.name.split
+      self.update(first_name: arr.first, last_name: arr.last)
     end
   end
 end
