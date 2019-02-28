@@ -5,26 +5,57 @@
       <%= f.label :query, "Adresse d'arrivée" %>
       <%= f.input_field :query, required: true, value: @user.address, class: "form-control" %>
 
-  <input type="hidden" name="search[start_time][]" value="">
-<div>
-  <label class="my-label">
-    <h2>15 min</h2>
-    <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
-  </label>
-</div>
+          <p>Je souhaite partir dans </p>
+        <div class="trip">
+          <input type="hidden" name="search[start_time][]" value="" class="inline">
+          <div>
+            <label class="my-label">
+              <p class="btn-checkbox">15 min</p>
+              <input class="d-none" type="checkbox" name="search[start_time][]" value="1" id="search_start_time">
+            </label>
+          </div>
+          <div>
+            <label class="my-label">
+              <p class="btn-checkbox">30 min</p>
+              <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
+            </label>
+          </div>
+           <div>
+            <label class="my-label">
+              <p class="btn-checkbox">1 h</p>
+              <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
+            </label>
+          </div>
+        </div>
 
-<div>
-  <label class="my-label">
-    <h2>Coco2</h2>
-    <input class="d-none" type="checkbox" name="search[start_time][]" value="1" id="search_start_time">
-  </label>
-</div>
+          <p>Mode(s) de transport</p>
+        <div class="trip">
+          <input type="hidden" name="search[transport][]" value="" class="inline">
+          <div >
+            <label class="my-label">
+             <p class="btn-checkbox"><i class="fas fa-walking"></i></p>
+              <input class="d-none" type="checkbox" name="search[transport][]" value="1" id="search_transport">
+            </label>
+          </div>
+          <div >
+            <label class="my-label">
+              <p class="btn-checkbox"><i class="fas fa-bicycle"></i></p>
+              <input class="d-none" type="checkbox" name="search[transport][]" value="0" id="search_transport">
+            </label>
+          </div>
+           <div >
+            <label class="my-label">
+              <p class="btn-checkbox"><i class="fas fa-bus-alt"></i></p>
+              <input class="d-none" type="checkbox" name="search[transport][]" value="0" id="search_transport">
+            </label>
+          </div>
+        </div>
 
-      <%= f.input :transport, as: :check_boxes, label: "Mode(s) de transport :", collection: [], class: "" %>
       <%= f.submit "Search", class: "btn btn-green search-button" %>
     </div>
   <% end %>
 </div>
+
 
 <script>
 
