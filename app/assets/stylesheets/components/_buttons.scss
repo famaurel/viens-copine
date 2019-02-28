@@ -1,6 +1,6 @@
 .btn-orange{
   color: white;
-  background: linear-gradient(-90deg,$yellow 5%,$orange 100%);
+  background: #FBA519;
   padding: 1em 2em;
   border-radius: 5px;
   font-weight: bold;
@@ -15,4 +15,13 @@
   p{
     margin: 0;
   }
+}
+
+.border-red {
+  border: 5px solid red;
+}
+
+.my-label {
+  background: $gray;
+  font-size: 14px;
 }

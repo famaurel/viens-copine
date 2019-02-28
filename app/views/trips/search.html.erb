@@ -1,0 +1,53 @@
+<div class="form-container">
+  <%= simple_form_for :search, url: trips_path, :method => :get do |f| %>
+    <div class="form-group">
+      <%= f.input :query, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
+      <%= f.label :query, "Adresse d'arrivée" %>
+      <%= f.input_field :query, required: true, value: @user.address, class: "form-control" %>
+
+  <input type="hidden" name="search[start_time][]" value="">
+<div>
+  <label class="my-label">
+    <h2>15 min</h2>
+    <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
+  </label>
+</div>
+
+<div>
+  <label class="my-label">
+    <h2>Coco2</h2>
+    <input class="d-none" type="checkbox" name="search[start_time][]" value="1" id="search_start_time">
+  </label>
+</div>
+
+      <%= f.input :transport, as: :check_boxes, label: "Mode(s) de transport :", collection: [], class: "" %>
+      <%= f.submit "Search", class: "btn btn-green search-button" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+
+ navigator.geolocation.getCurrentPosition(function(location) {
+  var lat = location.coords.latitude;
+  var lng = location.coords.longitude;
+  var latlng = lat + "," + lng;
+  console.log(latlng);
+  fetch(`/users/geocoded-address?lng=${lng}&lat=${lat}`)
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data.address);
+      document.querySelector('.form-control').value = data.address;
+    });
+
+});
+
+
+
+  const labels = document.querySelectorAll('.my-label');
+  labels.forEach((label) => {
+    label.addEventListener("click", (e) => {
+      e.target.classList.toggle("border-red");
+    });
+  });
+</script>
