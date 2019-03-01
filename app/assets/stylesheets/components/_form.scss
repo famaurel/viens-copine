@@ -1,9 +1,18 @@
+.form-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+}
+
 .form-container {
   background-color: white;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 5px;
   min-width: 90vw;
+  // display: flex;
+  // align-content: center;
 
     h2 {
       color: $purple;
@@ -21,13 +30,13 @@
     }
 
     input[type="submit"] {
-      padding:0em;
+      //padding:0em;
       color: white;
       background: $orange;
       padding: 0.5em 1em;
-      border-radius: 5px;
+      border-radius:10px;
       font-weight: bold;
-      border:0;
+      border: 0;
     }
 
     .trip {
@@ -37,6 +46,15 @@
 
     .my-label {
       flex-grow: 1;
+      width: 90px;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .form-control {
+      margin-bottom: 16px;
     }
 }
 
