@@ -16,6 +16,7 @@ class TripsController < ApplicationController
   end
 
   def search
+    @user = current_user
   end
 
   def create
