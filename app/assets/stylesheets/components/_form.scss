@@ -1,3 +1,9 @@
+.form-display {
+// display: flex;
+// width: 100vw;
+// //align-content: center;
+}
+
 .form-container {
   background-color: white;
   padding: 0.5em;
@@ -30,7 +36,6 @@
       border-radius:10px;
       font-weight: bold;
       border: 0;
-
     }
 
     .trip {
