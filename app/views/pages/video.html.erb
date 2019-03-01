@@ -1,4 +1,3 @@
-
 <div id="videos">
     <div id="subscriber"></div>
     <div id="publisher"></div>
@@ -13,6 +12,8 @@ function handleError(error) {
     alert(error.message);
   }
 }
+
+initializeSession();
 
 function initializeSession() {
    var session = OT.initSession('46278222', '<%= @session_id %>');
@@ -45,5 +46,4 @@ function initializeSession() {
   });
 }
 
-initializeSession();
 </script>
