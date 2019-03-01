@@ -1,9 +1,9 @@
 <div class="form-container">
   <%= simple_form_for :search, url: trips_path, :method => :get do |f| %>
     <div class="form-group">
-      <%= f.input :query, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
+      <%= f.input :start_address, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
       <%= f.label :query, "Adresse d'arrivée" %>
-      <%= f.input_field :query, required: true, value: @user.address, class: "form-control" %>
+      <%= f.input_field :end_address, required: true, value: @user.address, class: "form-control" %>
 
           <p>Je souhaite partir dans </p>
         <div class="trip">
