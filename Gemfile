@@ -20,6 +20,8 @@ gem 'omniauth-facebook'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
+gem "opentok", "~> 3.1.0"
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
