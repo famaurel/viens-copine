@@ -21,6 +21,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
 gem "opentok", "~> 3.1.0"
+gem "letter_opener", group: :development
 
 
 group :development do
