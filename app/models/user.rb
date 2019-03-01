@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   has_many :my_reviews, source: :reviews
 
+
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   after_create :split_name
