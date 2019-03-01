@@ -1,11 +1,12 @@
 <div class="form-container">
+  <h2>Mon trajet</h2>
   <%= simple_form_for :search, url: trips_path, :method => :get do |f| %>
     <div class="form-group">
       <%= f.input :query, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
       <%= f.label :query, "Adresse d'arrivée" %>
       <%= f.input_field :query, required: true, value: @user.address, class: "form-control" %>
 
-          <p>Je souhaite partir dans </p>
+        <p>Je souhaite partir dans </p>
         <div class="trip">
           <input type="hidden" name="search[start_time][]" value="" class="inline">
           <div>
@@ -28,7 +29,7 @@
           </div>
         </div>
 
-          <p>Mode(s) de transport</p>
+        <p>Mode(s) de transport</p>
         <div class="trip">
           <input type="hidden" name="search[transport][]" value="" class="inline">
           <div >
