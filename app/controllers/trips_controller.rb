@@ -2,7 +2,14 @@ class TripsController < ApplicationController
 
   def index
     @trip = Trip.new
-    @trips = Trip.all
+
+    if params[:search].present?
+      start_addresses_id = Address.near(params[:search][:start_address], 10).map(&:id)
+      end_addresses_id = Address.near(params[:search][:end_address], 10).map(&:id)
+      @trips = Trip.where(start_address_id: start_addresses_id, end_address_id: end_addresses_id)
+    else
+      @trips = Trip.all
+    end
   end
 
   def show
@@ -37,7 +44,7 @@ class TripsController < ApplicationController
 
   def trip_params
     # params[:transport] = params[:transport].to_i
-    params.require(:trip).permit(:transport, :start_time, :end_address, :started, :created_at, :updated_at)
+    params.require(:trip).permit(:transport, :start_time, :started, :start_address_id, :end_address_id, :created_at, :updated_at)
   end
 
 end

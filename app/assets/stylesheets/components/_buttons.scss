@@ -1,27 +1,50 @@
-.btn-orange{
+.btn-orange {
   color: white;
-  background: #FBA519;
+  background: linear-gradient(-90deg,$yellow 5%,$orange 100%);
   padding: 1em 2em;
   border-radius: 5px;
   font-weight: bold;
 }
 
-.btn-facebook{
+.btn-facebook {
   color: white;
   background-color:$blue-facebook;
   padding: 1em 2em;
   font-weight: bold;
   border:none;
-  p{
-    margin: 0;
-  }
+
+    p {
+      margin: 0;
+    }
 }
 
-.border-red {
-  border: 5px solid red;
+.btn-checkbox {
+  border-radius: 10px;
+  border: 1px solid;
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: $light-gray;
+
+   &:hover {
+      border: 1px solid $orange;
+      color: $orange;
+    }
+
+    .btn-checkbox-check {
+      border: 1px solid $orange;
+    }
 }
 
-.my-label {
-  background: $gray;
-  font-size: 14px;
+.btn-valid {
+    color: white;
+    background: $orange;
+    padding: 0.5em 1em;
+    border-radius:10px;
+    font-weight: bold;
+    border: 0;
 }
+
+
+

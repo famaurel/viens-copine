@@ -1,42 +1,45 @@
 
-<div class="container">
+<div class="container custom-card">
   <% @trips.each do |trip| %>
-    <div class="latte">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-      <div class="latte-content">
-        <p><%= trip.bookings[0].user.first_name %></p>
-        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
-      </div>
-
-      <div class="latte-info">
-        <div class="stars">
-          <% trip.bookings[0].user.average_rating.times do  %>
-            <i class="fas fa-star"></i>
-          <% end %>
+    <a href="<%= trip_path(trip.id) %>" class>
+      <div class="latte">
+        <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
+        <div class="latte-content">
+          <p><%= trip.bookings[0].user.first_name %></p>
+          <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
         </div>
-          <% category = trip.bookings[0].user.category %>
-          <% if category == 'fêtarde' %>
-            <i class="category fas fa-cocktail"></i>
-          <% elsif category == 'calme' %>
-            <i class="category fas fa-glass-whiskey"></i>
-          <% else %>
-            <i class="category fas fa-wine-glass-alt"></i>
-          <% end %>
+
+        <div class="latte-info">
+          <div class="stars">
+            <% trip.bookings[0].user.average_rating.times do  %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+            <% category = trip.bookings[0].user.category %>
+            <% if category == 'fêtarde' %>
+              <i class="category fas fa-cocktail"></i>
+            <% elsif category == 'calme' %>
+              <i class="category fas fa-glass-whiskey"></i>
+            <% else %>
+              <i class="category fas fa-wine-glass-alt"></i>
+            <% end %>
+        </div>
       </div>
+    </a>
+  <% end %>
+  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+</button>
      <%= link_to "voir le trajet", trip_path(trip.id)  %>
     </div>
   <% end %>
-
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">Créer un trajet
-</button>
 
 
 <!-- Modal -->
 <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-show form-container">
       <div class="modal-header">
         <h5 class="modal-title" id="testModalLabel">Je crée mon trajet</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -50,9 +53,9 @@
         <%= f.input :end_address %>
       </div>
       <div class="modal-footer">
-        <%= f.button :submit %>
+        <%= f.button :submit , class: 'btn btn-primary' %>
         <% end %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

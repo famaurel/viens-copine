@@ -1,32 +1,61 @@
-.form-container{
+.form-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+}
+
+.form-container {
   background-color: white;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 5px;
   min-width: 90vw;
-  h2{
-    color: $purple;
-    font-size: 24px;
-  }
-  a{
-    color:$purple!important;
-    font-size:16px;
-    margin-top:5px;
-  }
-  label{
-    color: $purple;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  input[type="submit"]{
-    padding:0em;
-    color: white;
-    background: #FBA519;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    font-weight: bold;
-    border:0;
-  }
+  // display: flex;
+  // align-content: center;
+
+    h2 {
+      color: $purple;
+      font-size: 24px;
+    }
+    a {
+      color:$purple!important;
+      font-size:16px;
+      margin-top:5px;
+    }
+    label, p {
+      color: $purple;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      //padding:0em;
+      color: white;
+      background: $orange;
+      padding: 0.5em 1em;
+      border-radius:10px;
+      font-weight: bold;
+      border: 0;
+    }
+
+    .trip {
+    display: flex;
+    justify-content: space-around;
+    }
+
+    .my-label {
+      flex-grow: 1;
+      width: 90px;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .form-control {
+      margin-bottom: 16px;
+    }
 }
 
 .form-shared-links{
@@ -42,3 +71,5 @@
   padding: 0.5em 0em;
   margin-bottom: 1em;
 }
+
+
