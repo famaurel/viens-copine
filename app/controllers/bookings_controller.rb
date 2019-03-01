@@ -1,13 +1,16 @@
 class BookingsController < ApplicationController
 
+
+
   def create
-    @trip = Trip.find(params[:id])
-    @booking = @user.booking.new(booking_params)
-    @booking.user = current_user
+    @trip = Trip.find(params[:trip_id])
+    @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
     if @booking.save
       redirect_to trips_path
+      flash[:notice] = "Vous avez bien rejoint le trip 🙂"
     else
-      render :new
+      redirect_to trips_path
+      flash[:alert] = "Vous êtes déja dans ce trajet"
     end
   end
 
