@@ -1,4 +1,4 @@
-.btn-orange{
+.btn-orange {
   color: white;
   background: linear-gradient(-90deg,$yellow 5%,$orange 100%);
   padding: 1em 2em;
@@ -6,13 +6,39 @@
   font-weight: bold;
 }
 
-.btn-facebook{
+.btn-facebook {
   color: white;
   background-color:$blue-facebook;
   padding: 1em 2em;
   font-weight: bold;
   border:none;
-  p{
-    margin: 0;
-  }
+
+    p {
+      margin: 0;
+    }
 }
+
+.btn-checkbox {
+  border-radius: 10px;
+  border: 1px solid;
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: $light-gray;
+
+
+
+    &:hover {
+      border: 1px solid $orange;
+      color: $orange;
+    }
+
+    .btn-checkbox-check {
+      border: 1px solid $orange;
+    }
+
+}
+
+
+
