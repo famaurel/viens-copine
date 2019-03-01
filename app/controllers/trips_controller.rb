@@ -1,9 +1,18 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
     @trip = Trip.new
     @trips = Trip.all
+  end
+
+  def show
+    @trips = Trip.where.not(start_lat: nil, start_long: nil)
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.start_long,
+        lat: trip.start_lat
+      }
+    end
   end
 
   def search
@@ -12,13 +21,13 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-   if @trip.save
-    @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
-    if @booking.save
-    redirect_to trips_path
-    else
-      render :index
-    end
+    if @trip.save
+      @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
+      if @booking.save
+        redirect_to trips_path
+      else
+        render :index
+      end
     else
       render :index
     end
