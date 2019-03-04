@@ -1,4 +1,5 @@
 User.destroy_all
+Address.destroy_all
 Review.destroy_all
 Booking.destroy_all
 Trip.destroy_all
@@ -22,31 +23,25 @@ user2 = User.create!(
  )
 
 address1 = Address.create!(
- latitude: 44.855684373859944,
- longitude: -0.5744621157646179,
- title: "Adresse 1",
+ title: "14 Avenue Émile Counord, 33300 Bordeaux, France",
  state: 0
 )
 
 
 address2 = Address.create!(
-   title: "Adresse 2",
-   latitude: 44.8543439,
-   longitude: -0.5723652,
+   title: "84 Cours de la Martinique, 33000 Bordeaux, France",
    state: 1
  )
 
 address3 = Address.create!(
-   title: "Adresse 3",
+   title: "57 Cours de la Martinique, 33000 Bordeaux, France",
    latitude: 44.8543439,
    longitude: -0.57236,
    state: 0
  )
 
 address4 = Address.create!(
-   title: "Adresse 4",
-   latitude: 44.85,
-   longitude: -0.572,
+   title: "8 Passage Notre-Dame, 33000 Bordeaux, France",
    state: 1
  )
 

@@ -14,22 +14,11 @@
 
     </div>
   </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 60vh;
-   zoom: 2;
-   center: [trip.start_address.longitude, trip.start_address.latitude];"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+  <div  id="map";
+  data-start_address="<%= @start_address.to_json %>";
+  data-end_address="<%= @end_address.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
-
-
-
-
-
-
-
 
 
