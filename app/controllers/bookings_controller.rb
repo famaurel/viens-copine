@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
     @creator = User.find(Booking.where(trip_id: @trip.id, creator: true).first.user_id)
     @creator.phone_number.slice!(0)
     @creator_phone = "+33" + @creator.phone_number
-    client = Twilio::REST::Client.new('AC69779e6d4639bb387d13ef8262c75b83','ab3e35ee104a712a28b121b67a074aa5')
+    client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'],ENV['AUTH_TOKEN'])
     from = '+33644645152'
     to = @creator_phone
     client.messages.create(
