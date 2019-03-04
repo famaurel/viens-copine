@@ -26,14 +26,15 @@
   padding: 10px 20px;
   margin-right: 10px;
   background-color: $light-gray;
+}
 
-    .btn-checkbox-check,
-    .btn-checkbox-check:checked,
-    &:hover {
+    .btn-checkbox-check
+    // .btn-checkbox-check:checked,
+    // &:hover
+    {
       border: 1px solid $orange;
       color: $orange;
     }
-}
 
 .btn-valid {
     color: white;
