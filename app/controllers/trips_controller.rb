@@ -18,10 +18,12 @@ class TripsController < ApplicationController
       lat: @trip.start_address.latitude
     }
     @end_address = {
-      lng: @trip.end_address.longitude,
-      lat: @trip.end_address.latitude
-    }
-    @bookings = @trip.bookings
+
+        lng: @trip.end_address.longitude,
+        lat: @trip.end_address.latitude
+      }
+
+      @bookings = @trip.bookings
   end
 
   def search

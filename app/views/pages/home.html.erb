@@ -4,24 +4,22 @@
         <h1>Viens copine</h1>
         <p>Rentre chez toi en sécurité</p>
         <% if current_user %>
-
         <%= current_user[:name] %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-
         <% else %>
-
-          <%= link_to user_facebook_omniauth_authorize_path, class: "btn-facebook d-flex" do %>
+        <%= link_to user_facebook_omniauth_authorize_path, class: "btn-facebook d-flex" do %>
           <i class='fab fa-facebook-f' style='font-size:24px; margin-right:0.5em;'></i>
-          <p>Sign in with Facebook</p>
+          <p>Connexion avec Facebook</p>
           <% end %>
           <div class="d-flex or-container">
             <div class="half-border"></div>
-            <p>or</p>
+            <p>où</p>
             <div class="half-border"></div>
           </div>
-
-          <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
-          <%= link_to t(".sign_in", default: "Sign up"), new_user_registration_path %>
+          <div class="or-container">
+            <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: 'btn btn-sign' %>
+            <%= link_to t(".sign_in", default: "Créer un compte"), new_user_registration_path, class: 'btn btn-sign' %>
+          </div>
         <% end %>
       </div>
     </div>
