@@ -9,9 +9,10 @@
 .btn-facebook {
   color: white;
   background-color:$blue-facebook;
-  padding: 1em 2em;
+  padding: .5em 1em;
   font-weight: bold;
   border:none;
+  border-radius: 5px;
 
     p {
       margin: 0;
@@ -45,6 +46,18 @@
     border: 0;
 }
 
+.btn-sign {
+    color: white;
+    // background: $orange;
+    padding: 0.5em 1em;
+    border-radius:10px;
+    font-weight: bold;
+    border: 1px solid white;
+    width: 100%;
+    margin-bottom:10px;
+
+
+  }
 
 
 
