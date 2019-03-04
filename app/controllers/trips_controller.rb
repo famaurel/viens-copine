@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-
   def index
     @trip = Trip.new
 
@@ -15,10 +14,11 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @start_address = {
-        lng: @trip.start_address.longitude,
-        lat: @trip.start_address.latitude
-      }
+      lng: @trip.start_address.longitude,
+      lat: @trip.start_address.latitude
+    }
     @end_address = {
+
         lng: @trip.end_address.longitude,
         lat: @trip.end_address.latitude
       }
@@ -33,8 +33,7 @@ class TripsController < ApplicationController
     @start_address = Address.create!(title: params[:search][:start_address], state: 0)
     @end_address = Address.create!(title: params[:search][:end_address], state: 1)
     @trip = Trip.new(transport: params[:search][:transport].last.to_i,
-                     start_time: Time.now + 60 * params[:search][:start_time].last.to_i
-                    )
+                     start_time: Time.now + 60 * params[:search][:start_time].last.to_i)
     @trip.start_address = @start_address
     @trip.end_address = @end_address
     if @trip.save
@@ -57,5 +56,4 @@ class TripsController < ApplicationController
     params.require(:search).permit(:transport, :start_time, :started)
   end
 end
-
 

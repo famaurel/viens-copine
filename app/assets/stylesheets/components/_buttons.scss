@@ -46,6 +46,10 @@
     border: 0;
 }
 
+
+.btn-secondary {
+  border-radius: 10px;
+}
 .btn-sign {
     color: white;
     // background: $orange;
@@ -60,8 +64,10 @@
   }
 
 
-
-
+.btn-toolbar {
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
 
 
 
