@@ -1,11 +1,7 @@
 
 <div class="container">
   <div class="latte">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-    <div class="latte-content">
-      <p>Juliette</p>
-      <span class="small">Départ : 22h30</span>
-    </div>
+    <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
 
     <div class="latte-info">
       <div class="stars">
@@ -23,7 +19,7 @@
   style="width: 100%;
   height: 60vh;
    zoom: 2;
-   center: [trip.start_long, trip.start_lat];"
+   center: [trip.start_address.longitude, trip.start_address.latitude];"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>

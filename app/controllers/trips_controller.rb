@@ -13,21 +13,25 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trips = Trip.where.not(start_lat: nil, start_long: nil)
+    @trip = Trip.find(params[:id])
+    @trips = Trip.where.not(start_address_id: nil, end_address_id: nil)
     @markers = @trips.map do |trip|
       {
-        lng: trip.start_long,
-        lat: trip.start_lat
+        lng: trip.start_address.longitude,
+        lat: trip.start_address.latitude
       }
     end
   end
 
   def search
-    @user = current_user
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @start_address = Address.create!(title: params[:search][:start_address], state: 0)
+    @end_address = Address.create!(title: params[:search][:end_address], state: 1)
+    @trip = Trip.new(transport: params[:search][:transport].last.to_i, start_time: params[:search][:start_time].last.to_i)
+    @trip.start_address = @start_address
+    @trip.end_address = @end_address
     if @trip.save
       @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
       if @booking.save
@@ -44,9 +48,8 @@ class TripsController < ApplicationController
 
   def trip_params
     # params[:transport] = params[:transport].to_i
-    params.require(:trip).permit(:transport, :start_time, :started, :start_address_id, :end_address_id, :created_at, :updated_at)
+    params.require(:search).permit(:transport, :start_time, :started)
   end
-
 end
 
 

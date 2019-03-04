@@ -3,7 +3,7 @@
   <% @trips.each do |trip| %>
     <a href="<%= trip_path(trip.id) %>" class>
       <div class="latte">
-        <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
+        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
         <div class="latte-content">
           <p><%= trip.bookings[0].user.first_name %></p>
           <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
@@ -29,9 +29,8 @@
   <% end %>
   <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
 </button>
-     <%= link_to "voir le trajet", trip_path(trip.id)  %>
+
     </div>
-  <% end %>
 </div>
 
 
@@ -47,14 +46,23 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @trip do |f| %>
-        <%= f.input :transport, collection: Trip.transports.keys %>
-        <%= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
-        <%= f.input :end_address %>
+        <%#= simple_form_for :trip_infos, url: trips_path, method: :post do |f| %>
+        <%#= f.input :transport, collection: Trip.transports.keys %>
+        <%#= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
+        <%#= f.input :end_address %>
+
+
+
+        <%= render "form", method: :post %>
+
+
+
+
+
       </div>
       <div class="modal-footer">
-        <%= f.button :submit , class: 'btn btn-primary' %>
-        <% end %>
+        <%#= f.button :submit , class: 'btn btn-primary' %>
+        <%# end %>
         <button type="button" class="btn" data-dismiss="modal">Close</button>
       </div>
     </div>
