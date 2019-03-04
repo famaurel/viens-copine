@@ -1,48 +1,32 @@
+<div class="container">
+  <div id="map";
+    data-start_address="<%= @start_address.to_json %>";
+    data-end_address="<%= @end_address.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
   <div class="col-sm-6">
-  <div class="latte">
-    <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
-      <div class="latte-info">
-        <div class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <i class="category fas fa-cocktail"></i>
-      </div>
-      <%= link_to "Rejoindre un trajet", trip_bookings_path(@trip.id), method: :post, class: "btn btn-orange" %>
+    <div class="btn-toolbar">
+    <%= link_to "Rejoindre le trajet", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %><%= link_to "Retour aux trajets", trips_path, class: "btn btn-secondary" %>
     </div>
 
-
-    <ul>
-      <% @bookings.each do |booking| %>
-      <li>Booking </li>
-      <li><%= booking.user.name %></li>
-      <% end %>
-    </ul>
-
-      <% @bookings.each do |booking| %>
       <div class="latte">
-        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
-
+        <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
             <ul>
-              <li><%= booking.user.first_name %></li>
-              <li> <%= booking.state %></li>
+              <li>Créatrice : <%= @trip.bookings[0].user.first_name %></li>
+              <li>Copines :
+                <% @bookings.drop(1).each do |booking| %>
+                  <img src=<%= booking.user.photo %> class="avatar-small"/>
+                <% end %>
+              </li>
+              <li>Statut : <%= @trip.bookings[0].state %></li>
+              <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
             </ul>
-
         </div>
-
-
-      <% end %>
-
-  </div>
-  <div  id="map";
-  data-start_address="<%= @start_address.to_json %>";
-  data-end_address="<%= @end_address.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
 

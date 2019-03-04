@@ -12,7 +12,6 @@
   padding: 1em 2em;
   font-weight: bold;
   border:none;
-
     p {
       margin: 0;
     }
@@ -44,10 +43,14 @@
     border: 0;
 }
 
+.btn-secondary {
+  border-radius: 10px;
+}
 
-
-
-
+.btn-toolbar {
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
 
 
 

@@ -16,14 +16,15 @@ var map = new mapboxgl.Map({
 
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v10',
-  center: start,
-  zoom: 15,
+
 });
+
+map.fitBounds([start, end], { padding: 20});
+
 
 // create a function to make a directions request
 function getRoute(start, end) {
   console.log(end);
-  console.log("coco");
   var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
   console.log(url);
   // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
@@ -97,7 +98,7 @@ map.on('load', function() {
     },
     paint: {
       'circle-radius': 10,
-      'circle-color': 'blue'
+      'circle-color': 'green'
     }
   });
   map.addLayer({
@@ -120,9 +121,10 @@ map.on('load', function() {
     },
     paint: {
       'circle-radius': 10,
-      'circle-color': 'green'
+      'circle-color': 'red'
     }
   });
 });
 getRoute(start, end);
+
 
