@@ -22,6 +22,8 @@ class TripsController < ApplicationController
         lng: @trip.end_address.longitude,
         lat: @trip.end_address.latitude
       }
+
+      @bookings = @trip.bookings
   end
 
   def search

@@ -15,10 +15,15 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index] do
     resources :reviews
+
   end
 
   namespace :my do
     resources :trips
+    resources :bookings do
+      member do
+        patch :approve
+      end
+    end
   end
-
 end
