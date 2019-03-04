@@ -10,6 +10,16 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   after_create :split_name
+  after_create :create_session_id
+
+
+  def create_session_id
+    require "opentok"
+    opentok = OpenTok::OpenTok.new('46278222', 'd3a9a4c0cc104cdae7dd05881ee18115d487fc5e')
+    session = opentok.create_session
+    self.update(session_id: session.session_id)
+    self.save
+  end
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
