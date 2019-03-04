@@ -3,7 +3,7 @@
   <div class="row">
   <div class="col-sm-6">
   <div class="latte">
-    <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
+    <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
 
       <div class="latte-info">
         <div class="stars">
@@ -20,7 +20,7 @@
 
     <ul>
       <% @bookings.each do |booking| %>
-      <li>Bokking </li>
+      <li>Booking </li>
       <li><%= booking.user.name %></li>
       <% end %>
     </ul>
