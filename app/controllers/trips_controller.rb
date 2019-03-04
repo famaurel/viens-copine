@@ -4,8 +4,8 @@ class TripsController < ApplicationController
     @trip = Trip.new
 
     if params[:search].present?
-      start_addresses_id = Address.near(params[:search][:start_address], 10).map(&:id)
-      end_addresses_id = Address.near(params[:search][:end_address], 10).map(&:id)
+      start_addresses_id = Address.near(params[:search][:start_address], 1).map(&:id)
+      end_addresses_id = Address.near(params[:search][:end_address], 1).map(&:id)
       @trips = Trip.where(start_address_id: start_addresses_id, end_address_id: end_addresses_id)
     else
       @trips = Trip.all
@@ -29,7 +29,9 @@ class TripsController < ApplicationController
   def create
     @start_address = Address.create!(title: params[:search][:start_address], state: 0)
     @end_address = Address.create!(title: params[:search][:end_address], state: 1)
-    @trip = Trip.new(transport: params[:search][:transport].last.to_i, start_time: params[:search][:start_time].last.to_i)
+    @trip = Trip.new(transport: params[:search][:transport].last.to_i,
+                     start_time: Time.now + 60 * params[:search][:start_time].last.to_i
+                    )
     @trip.start_address = @start_address
     @trip.end_address = @end_address
     if @trip.save
