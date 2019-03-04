@@ -4,7 +4,6 @@
   <div class="col-sm-6">
   <div class="latte">
     <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
-
       <div class="latte-info">
         <div class="stars">
           <i class="fas fa-star"></i>
@@ -25,36 +24,27 @@
       <% end %>
     </ul>
 
+      <% @bookings.each do |booking| %>
+      <div class="latte">
+        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
+
+            <ul>
+              <li><%= booking.user.first_name %></li>
+              <li> <%= booking.state %></li>
+            </ul>
+
+        </div>
+
+
+      <% end %>
 
   </div>
-  <div class="col-sm-6">
-      <div
-      id="map"
-      style="width: 100%;
-      height: 60vh;
-       zoom: 2;
-       center: [trip.start_long, trip.start_lat];"
-      data-markers="<%= @marker.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+  <div  id="map";
+  data-start_address="<%= @start_address.to_json %>";
+  data-end_address="<%= @end_address.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
-  </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 60vh;
-   zoom: 2;
-   center: [trip.start_address.longitude, trip.start_address.latitude];"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
 </div>
-
-</div>
-
-
-
 
 
 
