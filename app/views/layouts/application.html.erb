@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TODO</title>
+    <title>Viens, copine !</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -11,6 +11,26 @@
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
   </head>
   <body>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1263019360503634',
+          xfbml      : true,
+          version    : 'v3.2'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>

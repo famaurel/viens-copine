@@ -1,42 +1,44 @@
 
-<div class="container">
+<div class="container custom-card">
   <% @trips.each do |trip| %>
-    <div class="latte">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar"/>
-      <div class="latte-content">
-        <p><%= trip.bookings[0].user.first_name %></p>
-        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
-      </div>
-
-      <div class="latte-info">
-        <div class="stars">
-          <% trip.bookings[0].user.average_rating.times do  %>
-            <i class="fas fa-star"></i>
-          <% end %>
+    <a href="<%= trip_path(trip.id) %>" class>
+      <div class="latte">
+        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
+        <div class="latte-content">
+          <p><%= trip.bookings[0].user.first_name %></p>
+          <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
         </div>
-          <% category = trip.bookings[0].user.category %>
-          <% if category == 'fêtarde' %>
-            <i class="category fas fa-cocktail"></i>
-          <% elsif category == 'calme' %>
-            <i class="category fas fa-glass-whiskey"></i>
-          <% else %>
-            <i class="category fas fa-wine-glass-alt"></i>
-          <% end %>
-      </div>
-     <%= link_to "voir le trajet", trip_path(trip.id)  %>
-    </div>
-  <% end %>
 
+        <div class="latte-info">
+          <div class="stars">
+            <% trip.bookings[0].user.average_rating.times do  %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+            <% category = trip.bookings[0].user.category %>
+            <% if category == 'fêtarde' %>
+              <i class="category fas fa-cocktail"></i>
+            <% elsif category == 'calme' %>
+              <i class="category fas fa-glass-whiskey"></i>
+            <% else %>
+              <i class="category fas fa-wine-glass-alt"></i>
+            <% end %>
+        </div>
+      </div>
+    </a>
+  <% end %>
+  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+</button>
+
+    </div>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">Créer un trajet
-</button>
 
 
 <!-- Modal -->
 <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-show form-container">
       <div class="modal-header">
         <h5 class="modal-title" id="testModalLabel">Je crée mon trajet</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -44,15 +46,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @trip do |f| %>
-        <%= f.input :transport, collection: Trip.transports.keys %>
-        <%= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
-        <%= f.input :end_address %>
+        <%#= simple_form_for :trip_infos, url: trips_path, method: :post do |f| %>
+        <%#= f.input :transport, collection: Trip.transports.keys %>
+        <%#= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
+        <%#= f.input :end_address %>
+
+
+
+        <%= render "form", method: :post %>
+
+
+
+
+
       </div>
       <div class="modal-footer">
-        <%= f.button :submit %>
-        <% end %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%#= f.button :submit , class: 'btn btn-primary' %>
+        <%# end %>
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
