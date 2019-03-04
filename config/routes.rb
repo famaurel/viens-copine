@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: 'pages#home'
+  get 'video', to: 'pages#video'
 
   get '/trips/search', to: 'trips#search'
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-namespace :my do
+  namespace :my do
     resources :trips
   end
 

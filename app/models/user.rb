@@ -5,11 +5,22 @@ class User < ApplicationRecord
   has_many :trips, through: :bookings
   has_many :reviews, through: :bookings
   has_many :my_reviews, source: :reviews
+  #enum category: { fetar: 0, walk: 1, bus: 2 }
 
 
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   after_create :split_name
+  after_create :create_session_id
+
+
+  def create_session_id
+    require "opentok"
+    opentok = OpenTok::OpenTok.new('46278222', 'd3a9a4c0cc104cdae7dd05881ee18115d487fc5e')
+    session = opentok.create_session
+    self.update(session_id: session.session_id)
+    self.save
+  end
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

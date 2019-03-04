@@ -112,4 +112,3 @@ review3 = Review.create!(
  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempus sapien, non accumsan turpis.'
  )
 
-

@@ -15,19 +15,19 @@
             <div>
               <label class="my-label">
                 <p class="btn-checkbox">15 min</p>
-                <input class="d-none" type="checkbox" name="search[start_time][]" value="1" id="search_start_time">
+                <input class="d-none btn-checkbox" type="checkbox" name="search[start_time][]" value="15" id="search_start_time">
               </label>
             </div>
             <div>
               <label class="my-label">
                 <p class="btn-checkbox">30 min</p>
-                <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
+                <input class="d-none" type="checkbox" name="search[start_time][]" value="30" id="search_start_time">
               </label>
             </div>
              <div>
               <label class="my-label">
                 <p class="btn-checkbox">1 h</p>
-                <input class="d-none" type="checkbox" name="search[start_time][]" value="0" id="search_start_time">
+                <input class="d-none" type="checkbox" name="search[start_time][]" value="60" id="search_start_time">
               </label>
             </div>
           </div>
@@ -83,7 +83,7 @@
   const labels = document.querySelectorAll('.my-label');
   labels.forEach((label) => {
     label.addEventListener("click", (e) => {
-      e.target.classList.toggle("border-red");
+      e.target.classList.toggle("btn-checkbox-check");
     });
   });
 </script>

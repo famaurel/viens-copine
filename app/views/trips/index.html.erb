@@ -3,7 +3,7 @@
   <% @trips.each do |trip| %>
     <a href="<%= trip_path(trip.id) %>" class>
       <div class="latte">
-        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
+        <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
         <div class="latte-content">
           <p><%= trip.bookings[0].user.first_name %></p>
           <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
