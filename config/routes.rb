@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-namespace :my do
+  namespace :my do
     resources :trips
   end
 
