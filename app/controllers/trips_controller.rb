@@ -14,13 +14,14 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @trips = Trip.where.not(start_address_id: nil, end_address_id: nil)
-    @markers = @trips.map do |trip|
-      {
-        lng: trip.start_address.longitude,
-        lat: trip.start_address.latitude
+    @start_address = {
+        lng: @trip.start_address.longitude,
+        lat: @trip.start_address.latitude
       }
-    end
+    @end_address = {
+        lng: @trip.end_address.longitude,
+        lat: @trip.end_address.latitude
+      }
   end
 
   def search
@@ -36,6 +37,7 @@ class TripsController < ApplicationController
     @trip.end_address = @end_address
     if @trip.save
       @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
+      @booking.update(creator: true)
       if @booking.save
         redirect_to trips_path
       else

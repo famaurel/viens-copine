@@ -8,7 +8,6 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
-gem 'geocoder'
 
 gem 'autoprefixer-rails'
 
@@ -21,6 +20,11 @@ gem 'omniauth-facebook'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
+gem "opentok", "~> 3.1.0"
+gem "letter_opener", group: :development
+gem 'twilio-ruby', '~> 5.21.0'
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
