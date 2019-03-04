@@ -39,6 +39,14 @@
       border: 0;
     }
 
+
+
+    input[type=checkbox]:checked,
+    input[tupe=radio]:checked {
+      border: 1px solid $orange;
+      color: $orange;
+    }
+
     .trip {
     display: flex;
     justify-content: space-around;
