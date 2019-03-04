@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
       @subscriber_video_url = video_path + "?session_id=#{@session_id}&token=#{@subscriber_token}"
       UserMailer.booking(current_user, @trip, @subscriber_video_url).deliver_now
       redirect_to @publisher_video_url
+      send_sms_to_creator(@trip, @subscriber_video_url)
       flash[:notice] = "Vous avez bien rejoint le trip 🙂 attente de la copine pour le chat"
     else
       redirect_to trips_path
@@ -26,6 +27,21 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:user_id, :trip_id, :creator, :progress, :state)
+  end
+
+  def send_sms_to_creator(trip, video_url)
+    @video_url = video_url
+    @creator = User.find(Booking.where(trip_id: @trip.id, creator: true).first.user_id)
+    @creator.phone_number.slice!(0)
+    @creator_phone = "+33" + @creator.phone_number
+    client = Twilio::REST::Client.new('AC69779e6d4639bb387d13ef8262c75b83','ab3e35ee104a712a28b121b67a074aa5')
+    from = '+33644645152'
+    to = @creator_phone
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "Cliquez pour chater  http://0.0.0.0:3000/#{@video_url}"
+    )
   end
 
 end

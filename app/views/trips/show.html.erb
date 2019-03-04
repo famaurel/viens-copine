@@ -18,12 +18,21 @@
     </div>
 
 
-    <ul>
+
+
       <% @bookings.each do |booking| %>
-      <li>Bokking </li>
-      <li><%= booking.user.name %></li>
+      <div class="latte">
+        <img src='https://ca.slack-edge.com/T02NE0241-UF7QRS1M1-c46c82878af4-72' class="avatar"/>
+
+            <ul>
+              <li><%= booking.user.first_name %></li>
+              <li> <%= booking.state %></li>
+            </ul>
+
+        </div>
+
+
       <% end %>
-    </ul>
 
 
   </div>

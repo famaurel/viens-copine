@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :trips, through: :bookings
   has_many :reviews, through: :bookings
   has_many :my_reviews, source: :reviews
+  #enum category: { fetar: 0, walk: 1, bus: 2 }
 
 
   mount_uploader :photo, PhotoUploader
