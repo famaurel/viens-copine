@@ -10,7 +10,8 @@ user1 = User.create!(
  address: '107 cours Balguerie Stuttenberg 33300 Bordeaux',
  category: 'fêtarde',
  email: 'kathy@kathy.com',
- password: 'topsecret'
+ password: 'topsecret',
+ phone_number: '0685694571'
  )
 
 user2 = User.create!(
@@ -19,7 +20,8 @@ user2 = User.create!(
  address: '102 cours Balguerie Stuttenberg 33300 Bordeaux',
  category: 'calme',
  email: 'claudia@claudia.com',
- password: 'topsecret'
+ password: 'topsecret',
+ phone_number: '0685694571'
  )
 
 address1 = Address.create!(

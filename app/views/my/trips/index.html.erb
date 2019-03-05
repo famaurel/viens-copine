@@ -1,0 +1,86 @@
+
+<div class="container custom-card">
+  <% @trips.each do |trip| %>
+  <a href="<%= trip_path(trip.id) %>" class>
+    <div class="latte">
+      <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
+      <div class="latte-content">
+        <p><%= trip.bookings[0].user.first_name %></p>
+        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
+      </div>
+
+
+      <div>
+        <% if current_user == trip.creator%>
+        <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+        <i class="fas fa-times"></i>
+        <% end %>
+        <% end %>
+      </div>
+
+      <div class="btn-active-link">
+        <% if current_user != trip.creator %>
+        <%= active_link_to "Noter ce trajet", new_booking_review_path(Booking.first), active: {progress: 2} %>
+        <% end %>
+      </div>
+
+
+      <div class="latte-info">
+        <div class="stars">
+          <% trip.bookings[0].user.average_rating.times do  %>
+          <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <% category = trip.bookings[0].user.category %>
+        <% if category == 'fêtarde' %>
+        <i class="category fas fa-cocktail"></i>
+        <% elsif category == 'calme' %>
+        <i class="category fas fa-glass-whiskey"></i>
+        <% else %>
+        <i class="category fas fa-wine-glass-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </a>
+  <% end %>
+  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+  </button>
+
+</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-show form-container">
+      <div class="modal-header">
+        <h5 class="modal-title" id="testModalLabel">Je crée mon trajet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%#= simple_form_for :trip_infos, url: trips_path, method: :post do |f| %>
+        <%#= f.input :transport, collection: Trip.transports.keys %>
+        <%#= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
+        <%#= f.input :end_address %>
+
+
+
+        <%= render "form", method: :post %>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <%#= f.button :submit , class: 'btn btn-primary' %>
+        <%# end %>
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

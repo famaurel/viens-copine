@@ -41,17 +41,8 @@ class TripsController < ApplicationController
     @trip.start_address = @start_address
     @trip.end_address = @end_address
     if @trip.save
-        redirect_to my_trips_path
-
-    # format.js {redirect_to trips_path(@album)}
-
-
-      @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
-      @booking.update(creator: true)
-      if @booking.save
-      else
-        render :index
-      end
+      @booking = Booking.create(user_id: current_user.id, trip_id: @trip.id, creator: true)
+      redirect_to my_bookings_path
     else
       render :index
     end
