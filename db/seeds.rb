@@ -71,7 +71,7 @@ booking1 = Booking.create!(
    user: user1,
    trip: trip1,
    creator: true,
-   progress: 0,
+   progress: 2,
    state: 0
 )
 
@@ -94,8 +94,8 @@ booking2 = Booking.create!(
 review1 = Review.create!(
   user: user1,
   booking: booking1,
-  rating: 1,
-  content: 'topissime'
+  rating:1,
+  content: "a voir"
 )
 
 review2 = Review.create!(
