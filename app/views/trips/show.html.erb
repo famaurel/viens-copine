@@ -10,6 +10,7 @@
   <div class="row">
   <div class="col-sm-6">
     <div class="btn-toolbar">
+      <%= link_to "Rejoindre le trajet", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
       <% if current_user.bookings.last == nil %>
         <%= link_to "Rejoindre le trajet", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
         <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>
@@ -27,6 +28,16 @@
           </li>
           <li>Statut : <%= @trip.bookings[0].state %></li>
           <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
+          <li>Moyen de transport :
+            <% case @trip.transport %>
+            <% when "walk" %>
+              <i class="fas fa-walking"></i>
+            <% when "bike" %>
+              <i class="fas fa-bicycle"></i>
+            <% when "bus" %>
+              <i class="fas fa-bus"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

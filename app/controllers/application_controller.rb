@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  @hostname = ApplicationController.new.default_url_options[:host]
+
   protected
 
   def configure_permitted_parameters
@@ -10,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || trips_search_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || trips_path
   end
+
 end

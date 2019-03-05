@@ -23,12 +23,11 @@ class TripsController < ApplicationController
       lat: @trip.start_address.latitude
     }
     @end_address = {
-
         lng: @trip.end_address.longitude,
         lat: @trip.end_address.latitude
-      }
+    }
 
-      @bookings = @trip.bookings
+    @bookings = @trip.bookings
   end
 
   def search
@@ -42,10 +41,14 @@ class TripsController < ApplicationController
     @trip.start_address = @start_address
     @trip.end_address = @end_address
     if @trip.save
+        redirect_to my_trips_path
+
+    # format.js {redirect_to trips_path(@album)}
+
+
       @booking = Booking.new(user_id: current_user.id, trip_id: @trip.id)
       @booking.update(creator: true)
       if @booking.save
-        redirect_to trips_path
       else
         render :index
       end
