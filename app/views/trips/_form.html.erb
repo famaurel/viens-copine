@@ -68,11 +68,9 @@
   var lat = location.coords.latitude;
   var lng = location.coords.longitude;
   var latlng = lat + "," + lng;
-  console.log(latlng);
   fetch(`/users/geocoded-address?lng=${lng}&lat=${lat}`)
     .then(response => response.json())
     .then((data) => {
-      console.log(data.address);
       document.querySelector('.form-control').value = data.address;
     });
   });
@@ -81,11 +79,11 @@
   labels.forEach((label) => {
     label.addEventListener("click", (e) => {
       console.log(e.target.parentElement.parentElement.parentElement.querySelectorAll('.my-label'));
-      const triplabels = (e.target.parentElement.parentElement.parentElement.querySelectorAll('.input'));
+      const triplabels = (e.target.parentElement.parentElement.parentElement.querySelectorAll('.my-label'));
       triplabels.forEach((triplabel) => {
-        triplabel.classList.remove("btn-radio-check");
+        triplabel.classList.remove('btn-radio-check');
       });
-      e.target.classList.add("btn-radio-check");
+      e.target.classList.add('btn-radio-check');
     });
   });
 </script>
