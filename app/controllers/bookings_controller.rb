@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
       @subscriber_token = session.generate_token
       @session_id = session.session_id
       @hostname = ApplicationController.new.default_url_options[:host]
-
       @publisher_video_url = video_path + "?session_id=#{@session_id}&token=#{@publisher_token}"
       @subscriber_video_url = video_path + "?session_id=#{@session_id}&token=#{@subscriber_token}"
       #UserMailer.booking(current_user, @trip, @subscriber_video_url).deliver_now
@@ -32,12 +31,14 @@ class BookingsController < ApplicationController
   end
 
   def send_sms_to_creator(trip, video_url)
+
     @hostname = ApplicationController.new.default_url_options[:host]
-    url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + ENV['BITLY_TOKEN'] + '&longUrl=' + @hostname + video_url
-    response_serialized = open(url).read
-    bitly_response = JSON.parse(response_serialized)
-    bitly_url = bitly_response["data"]["url"]
-    @video_url = bitly_url
+    @video_url = @hostname + video_url
+    #url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + ENV['BITLY_TOKEN'] + '&longUrl=' + @hostname + @video_url
+    #response_serialized = open(url).read
+    #bitly_response = JSON.parse(response_serialized)
+    #bitly_url = bitly_response["data"]["url"]
+    #@video_url = bitly_url
     @creator = User.find(Booking.where(trip_id: @trip.id, creator: true).first.user_id)
     @creator.phone_number.slice!(0)
     @creator_phone = "+33" + @creator.phone_number
