@@ -13,45 +13,44 @@
           <div class="trip">
             <input type="hidden" name="search[start_time][]" value="" class="inline">
             <div>
-              <label class="my-label">
-                <div class="btn-checkbox">15 min</div>
-                <input class="d-none btn-checkbox" type="checkbox" name="search[start_time][]" value="15" id="search_start_time">
+              <label class="my-label" name="search[start_time][]">
+                <div class="btn-radio" >15 min</div>
+                <input class="d-none" type="radio" name="search[start_time][]" value="15" id="search_start_time">
               </label>
             </div>
             <div>
-              <label class="my-label">
-                <div class="btn-checkbox">30 min</div>
-                <input class="d-none" type="checkbox" name="search[start_time][]" value="30" id="search_start_time">
+              <label class="my-label" name="search[start_time][]">
+                <div class="btn-radio">30 min</div>
+                <input class="d-none" type="radio" name="search[start_time][]" value="30" id="search_start_time">
               </label>
             </div>
              <div>
-              <label class="my-label">
-                <div class="btn-checkbox">1 h</div>
-                <input class="d-none" type="checkbox" name="search[start_time][]" value="60" id="search_start_time">
+              <label class="my-label" name="search[start_time][]">
+                <div class="btn-radio">1 h</div>
+                <input class="d-none" type="radio" name="search[start_time][]" value="60" id="search_start_time">
               </label>
             </div>
           </div>
-
 
           <p>Mode(s) de transport</p>
           <div class="trip">
             <input type="hidden" name="search[transport][]" value="" class="inline">
             <div >
               <label class="my-label">
-               <div class="btn-checkbox"><i class="fas fa-walking"></i></div>
-                <input class="d-none" type="checkbox" name="search[transport][]" value="1" id="search_transport">
+               <div class="btn-radio"><i class="fas fa-walking"></i></div>
+                <input class="d-none" type="radio" name="search[transport][]" value="0" id="search_transport">
               </label>
             </div>
             <div >
               <label class="my-label">
-                <div class="btn-checkbox"><i class="fas fa-bicycle"></i></div>
-                <input class="d-none" type="checkbox" name="search[transport][]" value="0" id="search_transport">
+                <div class="btn-radio"><i class="fas fa-bicycle"></i></div>
+                <input class="d-none" type="radio" name="search[transport][]" value="1" id="search_transport">
               </label>
             </div>
              <div >
               <label class="my-label">
-                <div class="btn-checkbox"><i class="fas fa-bus-alt"></i></div>
-                <input class="d-none" type="checkbox" name="search[transport][]" value="0" id="search_transport">
+                <div class="btn-radio"><i class="fas fa-bus-alt"></i></div>
+                <input class="d-none" type="radio" name="search[transport][]" value="2" id="search_transport">
               </label>
             </div>
           </div>
@@ -65,26 +64,27 @@
 
 <script>
 
- navigator.geolocation.getCurrentPosition(function(location) {
+  navigator.geolocation.getCurrentPosition(function(location) {
   var lat = location.coords.latitude;
   var lng = location.coords.longitude;
   var latlng = lat + "," + lng;
-  console.log(latlng);
   fetch(`/users/geocoded-address?lng=${lng}&lat=${lat}`)
     .then(response => response.json())
     .then((data) => {
-      console.log(data.address);
       document.querySelector('.form-control').value = data.address;
     });
-
-});
-
-
+  });
 
   const labels = document.querySelectorAll('.my-label');
   labels.forEach((label) => {
+    console.log(label)
     label.addEventListener("click", (e) => {
-      e.target.classList.toggle("btn-checkbox-check");
+      console.log(e.currentTarget);
+      const triplabels = (e.currentTarget.parentElement.parentElement.querySelectorAll('.my-label'));
+      triplabels.forEach((triplabel) => {
+        triplabel.classList.remove('btn-radio-check');
+      });
+      e.currentTarget.classList.add('btn-radio-check');
     });
   });
 </script>
