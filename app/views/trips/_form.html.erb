@@ -15,19 +15,19 @@
             <div>
               <label class="my-label" name="search[start_time][]">
                 <div class="btn-radio" >15 min</div>
-                <input class="btn-radio" type="radio" name="search[start_time][]" value="15" id="search_start_time">
+                <input class="d-none" type="radio" name="search[start_time][]" value="15" id="search_start_time">
               </label>
             </div>
             <div>
               <label class="my-label" name="search[start_time][]">
                 <div class="btn-radio">30 min</div>
-                <input class="btn-radio" type="radio" name="search[start_time][]" value="30" id="search_start_time">
+                <input class="d-none" type="radio" name="search[start_time][]" value="30" id="search_start_time">
               </label>
             </div>
              <div>
               <label class="my-label" name="search[start_time][]">
                 <div class="btn-radio">1 h</div>
-                <input class="btn-radio" type="radio" name="search[start_time][]" value="60" id="search_start_time">
+                <input class="d-none" type="radio" name="search[start_time][]" value="60" id="search_start_time">
               </label>
             </div>
           </div>
@@ -77,13 +77,14 @@
 
   const labels = document.querySelectorAll('.my-label');
   labels.forEach((label) => {
+    console.log(label)
     label.addEventListener("click", (e) => {
-      console.log(e.target.parentElement.parentElement.parentElement.querySelectorAll('.my-label'));
-      const triplabels = (e.target.parentElement.parentElement.parentElement.querySelectorAll('.my-label'));
+      console.log(e.currentTarget);
+      const triplabels = (e.currentTarget.parentElement.parentElement.querySelectorAll('.my-label'));
       triplabels.forEach((triplabel) => {
         triplabel.classList.remove('btn-radio-check');
       });
-      e.target.classList.add('btn-radio-check');
+      e.currentTarget.classList.add('btn-radio-check');
     });
   });
 </script>

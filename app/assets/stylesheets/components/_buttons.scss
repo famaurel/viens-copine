@@ -24,18 +24,19 @@
   border: 1px solid;
   width: 100%;
   text-align: center;
-  padding: 10px 20px;
+  padding: 10px;
   margin-right: 10px;
   background-color: $light-gray;
 }
 
-    .btn-radio-check
+.btn-radio-check {
     // .btn-checkbox-check:checked,
     // &:hover
-    {
-      border: 1px solid $orange;
-      color: $orange;
-    }
+  border: 2px solid $purple;
+  color: $purple;
+  padding: 0px;
+  border-radius: 10px;
+}
 
 .btn-valid {
     color: white;
