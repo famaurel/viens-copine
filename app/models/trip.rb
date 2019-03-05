@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   enum transport: { bike: 0, walk: 1, bus: 2 }
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/trips/search', to: 'trips#search'
 
   get '/users/geocoded-address', to:  "users#geocoded_address",  defaults: { format: :json }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :trips do
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :my do
-    resources :trips
+    resources :trips, only: [:index, :create, :destroy]
     resources :bookings do
       member do
         patch :approve
