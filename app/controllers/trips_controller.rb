@@ -3,9 +3,14 @@ class TripsController < ApplicationController
     @trip = Trip.new
 
     if params[:search].present?
-      start_addresses_id = Address.near(params[:search][:start_address], 0.3).map(&:id)
-      end_addresses_id = Address.near(params[:search][:end_address], 0.3).map(&:id)
-      @trips = Trip.where(start_address_id: start_addresses_id, end_address_id: end_addresses_id)
+      start_addresses_id = Address.near(params[:search][:start_address], 0.5).map(&:id)
+      end_addresses_id = Address.near(params[:search][:end_address], 0.5).map(&:id)
+      start_time = (Time.now + 60 * params[:search][:start_time][1].to_i).to_i
+      transport = params[:search][:transport][1].to_i
+
+      @trips = Trip.where(start_address_id: start_addresses_id,
+                          end_address_id: end_addresses_id,
+                          transport: transport).where("start_time > ?", start_time)
     else
       @trips = Trip.all
     end
