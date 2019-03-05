@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
 
   def send_sms_to_creator(trip, video_url)
     @hostname = ApplicationController.new.default_url_options[:host]
-    url = 'https://api-ssl.bitly.com/v3/shorten?access_token=a5612e248ee8e1b210276fe94cc43c45a63379ec&longUrl=' + @hostname + video_url
+    url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + ENV['BITLY_TOKEN'] + '&longUrl=' + @hostname + video_url
     response_serialized = open(url).read
     bitly_response = JSON.parse(response_serialized)
     bitly_url = bitly_response["data"]["url"]
