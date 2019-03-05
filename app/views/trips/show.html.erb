@@ -27,6 +27,16 @@
           </li>
           <li>Statut : <%= @trip.bookings[0].state %></li>
           <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
+          <li>Moyen de transport :
+            <% case @trip.transport %>
+            <% when "walk" %>
+              <i class="fas fa-walking"></i>
+            <% when "bike" %>
+              <i class="fas fa-bicycle"></i>
+            <% when "bus" %>
+              <i class="fas fa-bus"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
