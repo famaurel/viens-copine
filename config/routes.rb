@@ -14,14 +14,14 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :update]
   end
 
-  resources :bookings, only: [:index] do
-    resources :reviews
+  resources :bookings, only: [:new, :create, :index] do
+    resources :reviews, only: [:new, :create]
 
   end
 
   namespace :my do
-    resources :trips, only: [:index, :create, :destroy]
-    resources :bookings do
+    resources :trips, only: [:destroy]
+    resources :bookings, only: [:index, :create] do
       member do
         patch :approve
       end

@@ -12,34 +12,39 @@
 
       <div>
         <% if current_user == trip.creator%>
-       <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
-       <i class="fas fa-times"></i>
-       <% end %>
-       <% end %>
-     </div>
-
-
-
-     <div class="latte-info">
-      <div class="stars">
-        <% trip.bookings[0].user.average_rating.times do  %>
-        <i class="fas fa-star"></i>
+        <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+        <i class="fas fa-times"></i>
+        <% end %>
         <% end %>
       </div>
-      <% category = trip.bookings[0].user.category %>
-      <% if category == 'fêtarde' %>
-      <i class="category fas fa-cocktail"></i>
-      <% elsif category == 'calme' %>
-      <i class="category fas fa-glass-whiskey"></i>
-      <% else %>
-      <i class="category fas fa-wine-glass-alt"></i>
-      <% end %>
+
+      <div class="btn-active-link">
+        <% if current_user != trip.creator %>
+        <%= active_link_to "Noter ce trajet", new_booking_review_path(Booking.first), active: {progress: 2} %>
+        <% end %>
+      </div>
+
+
+      <div class="latte-info">
+        <div class="stars">
+          <% trip.bookings[0].user.average_rating.times do  %>
+          <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <% category = trip.bookings[0].user.category %>
+        <% if category == 'fêtarde' %>
+        <i class="category fas fa-cocktail"></i>
+        <% elsif category == 'calme' %>
+        <i class="category fas fa-glass-whiskey"></i>
+        <% else %>
+        <i class="category fas fa-wine-glass-alt"></i>
+        <% end %>
+      </div>
     </div>
-  </div>
-</a>
-<% end %>
-<button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
-</button>
+  </a>
+  <% end %>
+  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+  </button>
 
 </div>
 </div>
