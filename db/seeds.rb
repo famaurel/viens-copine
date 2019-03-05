@@ -1,8 +1,8 @@
-User.destroy_all
 Address.destroy_all
 Review.destroy_all
 Booking.destroy_all
 Trip.destroy_all
+User.destroy_all
 
 user1 = User.create!(
  first_name: 'Kathy',
@@ -70,7 +70,7 @@ trip3 = Trip.create!(
 booking1 = Booking.create!(
    user: user1,
    trip: trip1,
-   creator: false,
+   creator: true,
    progress: 0,
    state: 0
 )
@@ -78,7 +78,7 @@ booking1 = Booking.create!(
 booking2 = Booking.create!(
    user: user2,
    trip: trip2,
-   creator: false,
+   creator: true,
    progress: 0,
    state: 0
 )
@@ -86,7 +86,7 @@ booking2 = Booking.create!(
 booking2 = Booking.create!(
    user: user2,
    trip: trip3,
-   creator: false,
+   creator: true,
    progress: 0,
    state: 0
 )

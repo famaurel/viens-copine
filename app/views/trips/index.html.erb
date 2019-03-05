@@ -1,36 +1,47 @@
 
 <div class="container custom-card">
   <% @trips.each do |trip| %>
-    <a href="<%= trip_path(trip.id) %>" class>
-      <div class="latte">
-        <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
-        <div class="latte-content">
-          <p><%= trip.bookings[0].user.first_name %></p>
-          <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
-        </div>
-
-        <div class="latte-info">
-          <div class="stars">
-            <% trip.bookings[0].user.average_rating.times do  %>
-              <i class="fas fa-star"></i>
-            <% end %>
-          </div>
-            <% category = trip.bookings[0].user.category %>
-            <% if category == 'fêtarde' %>
-              <i class="category fas fa-cocktail"></i>
-            <% elsif category == 'calme' %>
-              <i class="category fas fa-glass-whiskey"></i>
-            <% else %>
-              <i class="category fas fa-wine-glass-alt"></i>
-            <% end %>
-        </div>
+  <a href="<%= trip_path(trip.id) %>" class>
+    <div class="latte">
+      <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
+      <div class="latte-content">
+        <p><%= trip.bookings[0].user.first_name %></p>
+        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
       </div>
-    </a>
-  <% end %>
-  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+
+
+      <div>
+        <% if current_user == trip.creator%>
+       <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+       <i class="fas fa-times"></i>
+       <% end %>
+       <% end %>
+     </div>
+
+
+
+     <div class="latte-info">
+      <div class="stars">
+        <% trip.bookings[0].user.average_rating.times do  %>
+        <i class="fas fa-star"></i>
+        <% end %>
+      </div>
+      <% category = trip.bookings[0].user.category %>
+      <% if category == 'fêtarde' %>
+      <i class="category fas fa-cocktail"></i>
+      <% elsif category == 'calme' %>
+      <i class="category fas fa-glass-whiskey"></i>
+      <% else %>
+      <i class="category fas fa-wine-glass-alt"></i>
+      <% end %>
+    </div>
+  </div>
+</a>
+<% end %>
+<button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
 </button>
 
-    </div>
+</div>
 </div>
 
 
