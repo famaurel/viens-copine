@@ -30,7 +30,12 @@ class BookingsController < ApplicationController
   end
 
   def send_sms_to_creator(trip, video_url)
-    @video_url = video_url
+    @hostname = ApplicationController.new.default_url_options[:host]
+    url = 'https://api-ssl.bitly.com/v3/shorten?access_token=a5612e248ee8e1b210276fe94cc43c45a63379ec&longUrl=' + @hostname + video_url
+    response_serialized = open(url).read
+    bitly_response = JSON.parse(response_serialized)
+    bitly_url = bitly_response["data"]["url"]
+    @video_url = bitly_url
     @creator = User.find(Booking.where(trip_id: @trip.id, creator: true).first.user_id)
     @creator.phone_number.slice!(0)
     @creator_phone = "+33" + @creator.phone_number
@@ -40,7 +45,7 @@ class BookingsController < ApplicationController
     client.messages.create(
     from: from,
     to: to,
-    body: "Cliquez pour chater  http://0.0.0.0:3000/#{@video_url}"
+    body: "Cliquez pour chater #{@video_url}"
     )
   end
 
