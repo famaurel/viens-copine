@@ -11,16 +11,16 @@
         <span class="small"> Départ : <%= Time.at(booking.trip.start_time).strftime("%Hh%M") %></span>
       </div>
       <div>
-       <%= link_to my_trip_path(booking.trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
-        <i class="fas fa-times"></i>
-       <% end %>
       </div>
 
       <div class="latte-info">
         <div class="stars">
-          <% booking.user.average_rating.times do  %>
+         <%= link_to my_trip_path(booking.trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+          <i class="fas fa-times"></i>
+         <% end %>
+<!--           <% booking.user.average_rating.times do  %>
             <i class="fas fa-star"></i>
-          <% end %>
+          <% end %> -->
         </div>
         <i class="category <%= category_icon(booking.user.category) %>"></i>
       </div>
