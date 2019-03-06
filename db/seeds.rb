@@ -11,7 +11,7 @@ user1 = User.create!(
  category: 'fêtarde',
  email: 'kathy@kathy.com',
  password: 'topsecret',
- phone_number: '0685694571'
+ phone_number: '0679480369'
  )
 
 user2 = User.create!(
@@ -21,7 +21,7 @@ user2 = User.create!(
  category: 'calme',
  email: 'claudia@claudia.com',
  password: 'topsecret',
- phone_number: '0685694571'
+ phone_number: '0679480369'
  )
 
 address1 = Address.create!(

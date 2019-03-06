@@ -28,10 +28,10 @@ class My::BookingsController < ApplicationController
  end
 
  def send_sms_accepted(user)
-  @user_phone = "+33685694571"
+  @user_phone = "+33679480369"
   client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
-  from = '+33644645152'
-  to = @user_phone
+  from = '+19796618636'
+  to = '+33679480369'
   client.messages.create(
     from: from,
     to: to,
