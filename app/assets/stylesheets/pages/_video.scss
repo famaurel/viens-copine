@@ -1,20 +1,19 @@
 #videos {
-  width: 300px;
-  height: 300px;
+  text-align: center;
 }
 
 #subscriber {
   width: 90vw;
   height: 220px;
-  border: 3px solid white;
+  border: 3px solid $gray;
   border-radius: 3px;
-  margin-bottom: 15px;
+  margin: 10px auto;
 }
 
 #publisher {
   width: 90vw;
   height: 220px;
-  border: 3px solid white;
+  border: 3px solid $gray;
   border-radius: 3px;
-  margin-bottom: 15px;
+  margin: 10px auto;
 }
