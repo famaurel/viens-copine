@@ -14,19 +14,19 @@
             <input type="hidden" name="search[start_time][]" value="" class="inline">
             <div>
               <label class="my-label" name="search[start_time][]">
-                <div class="btn-radio" >15 min</div>
+                <div class="btn-radio" ><p>15 min</p></div>
                 <input class="d-none" type="radio" name="search[start_time][]" value="15" id="search_start_time">
               </label>
             </div>
             <div>
               <label class="my-label" name="search[start_time][]">
-                <div class="btn-radio">30 min</div>
+                <div class="btn-radio"><p>30 min</p></div>
                 <input class="d-none" type="radio" name="search[start_time][]" value="30" id="search_start_time">
               </label>
             </div>
              <div>
               <label class="my-label" name="search[start_time][]">
-                <div class="btn-radio">1 h</div>
+                <div class="btn-radio"><p>1 h</p></div>
                 <input class="d-none" type="radio" name="search[start_time][]" value="60" id="search_start_time">
               </label>
             </div>
@@ -47,7 +47,7 @@
                 <input class="d-none" type="radio" name="search[transport][]" value="1" id="search_transport">
               </label>
             </div>
-             <div >
+             <div>
               <label class="my-label">
                 <div class="btn-radio"><i class="fas fa-bus-alt"></i></div>
                 <input class="d-none" type="radio" name="search[transport][]" value="2" id="search_transport">
@@ -80,10 +80,13 @@
     label.addEventListener("click", (e) => {
       console.log(e.currentTarget);
       const triplabels = (e.currentTarget.parentElement.parentElement.querySelectorAll('.my-label'));
+      console.log(triplabels);
       triplabels.forEach((triplabel) => {
         triplabel.classList.remove('btn-radio-check');
       });
       e.currentTarget.classList.add('btn-radio-check');
     });
   });
+
+
 </script>
