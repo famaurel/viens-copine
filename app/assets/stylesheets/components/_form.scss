@@ -11,6 +11,7 @@
   margin: 0.5em;
   border-radius: 5px;
   min-width: 90vw;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   // display: flex;
   // align-content: center;
 
@@ -33,10 +34,13 @@
       //padding:0em;
       color: white;
       background: $orange;
-      padding: 0.5em 1em;
+      padding: 1em 2em;
       border-radius:10px;
       font-weight: bold;
       border: 0;
+      display: block;
+      width:100%;
+      text-align:center;
     }
 
 // button checkbox / label ==> trajet & départ dans
@@ -79,4 +83,15 @@
   margin-bottom: 1em;
 }
 
+.form-control-file{
+  display: none;
+}
 
+.upload-button{
+    border: $purple solid 1px;
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+    padding: 1em 2em;
+    text-align: center;
+  }
