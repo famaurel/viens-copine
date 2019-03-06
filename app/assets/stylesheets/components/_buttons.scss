@@ -20,33 +20,46 @@
 }
 
 .btn-radio {
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid;
   width: 100%;
   text-align: center;
   padding: 10px;
   margin-right: 10px;
   background-color: $light-gray;
+  p {
+    margin-bottom:0!important;
+  }
 }
 
 .btn-radio-check {
     // .btn-checkbox-check:checked,
     // &:hover
-  border: 2px solid $purple;
-  color: $purple;
+  //border: 2px solid $purple;
+  i {
+    color: $orange;
   padding: 0px;
   border-radius: 10px;
+  }
+  .btn-radio{
+    border: solid $orange 1px;
+    border-radius: 5px;
+    p {
+      padding:0;
+      color: $orange!important;
+    }
+  }
 }
 
 .btn-valid {
-    color: white;
-    background: $orange!important;
-    padding: 1em 2em;
-    border-radius:5px;
-    font-weight: bold;
-    display:block;
-    width: 100%;
-    text-align: center;
+  color: white;
+  background: $orange!important;
+  padding: 1em 2em;
+  border-radius:5px;
+  font-weight: bold;
+  display:block;
+  width: 100%;
+  text-align: center;
 }
 
 .btn-valid-puple{
