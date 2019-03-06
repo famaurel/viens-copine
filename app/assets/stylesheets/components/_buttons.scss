@@ -40,13 +40,28 @@
 
 .btn-valid {
     color: white;
-    background: $orange;
-    padding: 0.5em 1em;
-    border-radius:10px;
+    background: $orange!important;
+    padding: 1em 2em;
+    border-radius:5px;
     font-weight: bold;
-    border: 0;
+    display:block;
+    width: 100%;
+    text-align: center;
 }
 
+.btn-valid-puple{
+  color: white;
+  color: $purple;
+  background: white!important;
+  padding: 1em 2em;
+  border: $purple solid 1px;
+  border-radius:5px;
+  font-weight: bold;
+  display:block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5em;
+}
 
 .btn-secondary {
   border-radius: 10px;

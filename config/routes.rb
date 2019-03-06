@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'video', to: 'pages#video'
-
   get '/trips/search', to: 'trips#search'
-
   get '/users/geocoded-address', to:  "users#geocoded_address",  defaults: { format: :json }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
