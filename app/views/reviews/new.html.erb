@@ -1,9 +1,7 @@
-
-
 <div class="wrapper-style">
   <div class="container container-style">
     <div class="form-style">
-     <%= simple_form_for @booking, url: new_booking_review_path(@booking), method: :post do |f| %>
+     <%= simple_form_for [@booking, @review], url: booking_reviews_path(@booking.id)  do |f| %>
      <%= f.input :content %>
      <%= f.input :rating %>
      <%= f.button :submit , class: 'btn btn-green' %>
