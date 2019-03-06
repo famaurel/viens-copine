@@ -19,7 +19,7 @@ var map = new mapboxgl.Map({
   zoom: 10
 });
 
-map.fitBounds([start, end], { padding: 70});
+map.fitBounds([start, end], { duration: 2000, padding: 70});
 
 map.addControl(new mapboxgl.NavigationControl());
 
@@ -28,7 +28,7 @@ map.addControl(new mapboxgl.NavigationControl());
 function getRoute(start, end) {
   console.log(end);
   var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
-  console.log(url);
+  //console.log(url);
   // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
   var req = new XMLHttpRequest();
   req.responseType = 'json';
