@@ -5,7 +5,7 @@
     <div class="latte">
       <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
       <div class="latte-content">
-        <p><%= trip.bookings[0].user.first_name %></p>
+        <h2><%= trip.bookings[0].user.first_name %></h2>
         <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
       </div>
 
@@ -18,11 +18,11 @@
         <% end %>
       </div>
 
-      <div class="btn-active-link">
+<!--       <div class="btn-active-link">
         <% if current_user != trip.creator %>
         <%= active_link_to "Noter ce trajet", new_booking_review_path(Booking.first), active: {progress: 2} %>
         <% end %>
-      </div>
+      </div> -->
 
 
       <div class="latte-info">

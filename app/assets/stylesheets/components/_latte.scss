@@ -2,21 +2,27 @@
   display: flex;
   align-items: top;
   margin-bottom: 8px;
-  background: white;
-  padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
-  border-radius: 5px;
+  //background: white;
+  padding: 8px 8px;
+  border-bottom: 1px solid rgb(235,235,235);
+  // border-radius: 5px;
   position: relative;
 }
 
 .latte .latte-content {
-  // flex-grow: 1;
+  flex-grow: 1;
   padding: 0 17px;
 }
 
 .latte p {
   margin-bottom: 6px;
   line-height: 1.4;
+}
+
+.latte h2{
+  font-weight: bolder;
+  font-size: 14px;
+  color: $purple;
 }
 
 .latte .small {
@@ -26,6 +32,7 @@
 .latte .latte-info {
   opacity: 1;
   display: flex;
+  flex-grow:1;
   transition: ease .3s;
 }
 
