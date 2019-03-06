@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background: linear-gradient(150deg, #3a1898 15%, #9f2bea 94%);
+  background-color: $purple;
 }
 
 
@@ -9,15 +9,10 @@ body {
     text-decoration: none;
   }
 
-
-  .viens-copine{
-  height: 100vh;
+.viens-copine{
+  min-height:calc(100vh - 100px);
+  //height: 100%;
   width: 100%;
-  //overflow: hidden;
-  // transform: skewY(-12deg);
-  // transform-origin: 0;
-  //background: linear-gradient(150deg,#3a1898 15%,#9f2bea 94%);
-  height: calc(100% - 56px);
   display: flex;
   justify-content: center;
   align-items: center;
