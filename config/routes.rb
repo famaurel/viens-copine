@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: 'pages#home'
+
+  get 'alert_sign_in', to: 'pages#alert_sign_in'
+
   get 'video', to: 'pages#video'
 
   get '/trips/search', to: 'trips#search'
