@@ -10,12 +10,6 @@
   <div class="row">
   <div class="col-sm-6">
     <div class="btn-toolbar">
-      <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
-      <% if current_user.bookings.last == nil %>
-        <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
-        <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>
-      <% end %>
-      <%= link_to "Retour aux trajets", :back, class: "btn btn-secondary" %>
     </div>
     <div class="latte">
       <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
@@ -40,6 +34,11 @@
           </li>
         </ul>
       </div>
+      <% if current_user.bookings.last == nil %>
+        <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
+        <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>
+      <% end %>
+      <%= link_to "Retour aux trajets", :back, class: "btn btn-valid-puple" %>
     </div>
   </div>
 </div>

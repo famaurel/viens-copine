@@ -28,7 +28,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
   </head>
-  <body class="<%= 'background-purple' if current_page?(root_path) || controller.controller_name == "sessions" || controller.controller_name == "registrations" %>">
+
+  <body class="background-purple">
 
     <script>
       window.fbAsyncInit = function() {
@@ -49,13 +50,7 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <% if current_page?(root_path) || controller.controller_name == "sessions" || controller.controller_name == "registrations" %>
     <%= render 'shared/navbar' %>
-    <% else %>
-    <%= render 'shared/navbar_white' %>
-    <% end %>
-
-
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
