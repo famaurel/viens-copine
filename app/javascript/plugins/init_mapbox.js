@@ -15,11 +15,13 @@ const start = [ dataStart.lng, dataStart.lat ];
 var map = new mapboxgl.Map({
 
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v10',
-
+  style: 'mapbox://styles/famaurel/cjsw0t6yk057a1gp8o73qrlp2', //mapbox://styles/mapbox/streets-v10',
+  zoom: 10
 });
 
-map.fitBounds([start, end], { padding: 20});
+map.fitBounds([start, end], { padding: 70});
+
+map.addControl(new mapboxgl.NavigationControl());
 
 
 // create a function to make a directions request
@@ -98,7 +100,7 @@ map.on('load', function() {
     },
     paint: {
       'circle-radius': 10,
-      'circle-color': 'green'
+      'circle-color': 'purple'
     }
   });
   map.addLayer({
@@ -121,7 +123,7 @@ map.on('load', function() {
     },
     paint: {
       'circle-radius': 10,
-      'circle-color': 'red'
+      'circle-color': 'orange'
     }
   });
 });
