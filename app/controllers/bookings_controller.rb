@@ -43,8 +43,8 @@ class BookingsController < ApplicationController
     @creator.phone_number.slice!(0)
     @creator_phone = "+33" + @creator.phone_number
     client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'],ENV['AUTH_TOKEN'])
-    from = '+33644645152'
-    to = @creator_phone
+    from = '+19796618636'
+    to = '+33679480369'
     client.messages.create(
     from: from,
     to: to,
