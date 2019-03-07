@@ -68,8 +68,10 @@
 
 
 <script>
-(function (){
-  ('button.do-geoloc').click(function () {
+
+const doGeoloc = document.querySelector("button.do-geoloc");
+
+  doGeoloc.addEventListener("click", (e) => {
     navigator.geolocation.getCurrentPosition(function(location) {
   var lat = location.coords.latitude;
   var lng = location.coords.longitude;
@@ -80,7 +82,6 @@
       document.querySelector('.form-control').value = data.address;
     });
   });
-})
 })
 
 
