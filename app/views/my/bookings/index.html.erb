@@ -2,11 +2,11 @@
 
   <% unless @creator_bookings.first == nil %>
 
-  <div class="container custom-card">
+  <div class="custom-card">
   <% @creator_bookings.each do |booking| %>
-  <a href="<%= my_booking_path(booking.id) %>" class>
     <div class="latte">
       <img src=<%= booking.user.photo %> class="avatar"/>
+      <a href="<%= my_booking_path(booking.id) %>" class="custom-card">
       <div class="latte-content">
         <p><%= booking.user.first_name %></p>
         <span class="small"> Départ : <%= Time.at(booking.trip.start_time).strftime("%Hh%M") %></span>
