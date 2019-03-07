@@ -2,7 +2,8 @@
 
   <% unless @creator_bookings.first == nil %>
 
-    <h2 class="booking-title">Mes trajets créés</h2>
+
+    <h2 class="booking-title">Mon trajet</h2>
 
 
     <div class="custom-card">
@@ -32,26 +33,23 @@
     </div>
   <% end %>
 
-  <% unless @pending_bookings.first == nil %>
+  <% unless @pending_bookings == nil || @pending_bookings.first == nil %>
     <h2 class="booking-title">Mes réservations</h2>
 
-  <div class="custom-card">
-    <% @pending_bookings.each do |pending_booking| %>
-
-      <div class="latte">
-        <img src=<%= pending_booking.user.photo %> class="avatar"/>
-        <div class="latte-content">
-          <p><%= pending_booking.user.first_name %></p>
-          <span class="small"> Statut :
-            <% if pending_booking.state == "pending" %>
-            <%= "en attente" %>
-            <% else %>
-            <%= "validé" %>
-            <% end %>
-          </li>
-        </div>
-        <div>
-        </div>
+    <div class="custom-card">
+      <% @pending_bookings.each do |pending_booking| %>
+        <div class="latte">
+          <img src=<%= pending_booking.user.photo %> class="avatar"/>
+          <div class="latte-content">
+            <p><%= pending_booking.user.first_name %></p>
+            <span class="small"> Statut :
+              <% if pending_booking.state == "pending" %>
+                <%= "en attente" %>
+              <% else %>
+                <%= "validé" %>
+              <% end %>
+            </span>
+          </div>
 
         <div class="latte-info">
           <% if pending_booking.state == "pending" %>
@@ -59,8 +57,8 @@
           <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
   <% end %>
 
 
@@ -71,26 +69,22 @@
 
     <h2 class="booking-title">Mes trajets en cours et passés</h2>
 
-  <div class="custom-card">
-    <% @client_bookings.each do |client_booking| %>
+    <div class="custom-card">
+      <% @client_bookings.each do |client_booking| %>
+        <div class="latte">
+          <img src=<%= client_booking.user.photo %> class="avatar"/>
+          <div class="latte-content">
+            <p><%= client_booking.user.first_name %></p>
+            <span class="small"> Départ : <%= Time.at(client_booking.trip.start_time).strftime("%Hh%M") %></span>
+          </div>
 
-      <div class="latte">
-        <img src=<%= client_booking.user.photo %> class="avatar"/>
-        <div class="latte-content">
-          <p><%= client_booking.user.first_name %></p>
-          <span class="small"> Départ : <%= Time.at(client_booking.trip.start_time).strftime("%Hh%M") %></span>
+          <div class="latte-info">
+            <span class="small" style="color:#8898aa; font-size:16px;"> Arrivée : <%= client_booking.trip.end_address.title %></span>
+          </div>
         </div>
-        <div>
-        </div>
-
-        <div class="latte-info">
-          <span class="small" style="color:#8898aa; font-size:16px;"> Arrivée : <%= client_booking.trip.end_address.title %></span>
-        </div>
-      </div>
-    <% end %>
-   <% end %>
-
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 

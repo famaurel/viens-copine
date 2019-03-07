@@ -70,7 +70,7 @@ function getRoute(start, end) {
           'line-cap': 'round'
         },
         paint: {
-          'line-color': 'yellow',
+          'line-color': 'purple',
           'line-width': 5,
           'line-opacity': 0.75
         }
