@@ -38,7 +38,7 @@
   <% unless @pending_bookings.first == nil %>
     <h2 class="booking-title">Mes réservations</h2>
 
-  <div class="container custom-card">
+  <div class="custom-card">
     <% @pending_bookings.each do |pending_booking| %>
 
       <div class="latte">
@@ -74,7 +74,7 @@
 
     <h2 class="booking-title">Mes trajets en cours et passés</h2>
 
-  <div class="container custom-card">
+  <div class="custom-card">
     <% @client_bookings.each do |client_booking| %>
 
       <div class="latte">
