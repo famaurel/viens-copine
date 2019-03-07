@@ -1,8 +1,8 @@
 class TripsController < ApplicationController
   def index
     if params[:search].present?
-      start_addresses_ids = Address.near(params[:search][:start_address], 0.5).map(&:id)
-      end_addresses_ids = Address.near(params[:search][:end_address], 0.5).map(&:id)
+      start_addresses_ids = Address.near(params[:search][:start_address], 1).map(&:id)
+      end_addresses_ids = Address.near(params[:search][:end_address], 1).map(&:id)
       start_time = (Time.now + 60 * params[:search][:start_time][1].to_i).to_i
       transport = params[:search][:transport][1].to_i
 
