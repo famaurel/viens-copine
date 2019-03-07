@@ -1,48 +1,48 @@
 
 <div class="container custom-card">
   <% if @trips.first == nil %>
-  <div style="color: #3a1898; text-align: center; font-size: 18px; font-weight: bold; padding: 0.75em; margin: 2em 0em; border: solid 1px #3a1898; border-radius: 10px;">
-    Aucun trajet disponible correspondant à votre demande. Ajoutez votre trajet.
-  </div>
+    <div style="color: #3a1898; text-align: center; font-size: 18px; font-weight: bold; padding: 0.75em; margin: 2em 0em; border: solid 1px #3a1898; border-radius: 10px;">
+      Aucun trajet disponible correspondant à votre demande. Ajoutez votre trajet.
+    </div>
   <% end %>
 
   <% @trips.each do |trip| %>
-  <a href="<%= trip_path(trip.id) %>" class>
-    <div class="latte">
-      <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
-      <div class="latte-content">
-        <h2><%= trip.bookings[0].user.first_name %></h2>
-        <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
-      </div>
+    <a href="<%= trip_path(trip.id) %>" class>
+      <div class="latte">
+        <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
+        <div class="latte-content">
+          <h2><%= trip.bookings[0].user.first_name %></h2>
+          <span class="small"> Départ : <%= Time.at(trip.start_time).strftime("%Hh%M") %></span>
+        </div>
 
 
-      <div>
-        <% if current_user == trip.creator%>
-        <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
-        <i class="fas fa-times"></i>
-        <% end %>
-        <% end %>
-      </div>
-
-
-
-      <div class="latte-info">
-        <div class="stars">
-          <% trip.bookings[0].user.average_rating.times do  %>
-          <i class="fas fa-star"></i>
+        <div>
+          <% if current_user == trip.creator%>
+          <%= link_to my_trip_path(trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+          <i class="fas fa-times"></i>
+          <% end %>
           <% end %>
         </div>
-        <% category = trip.bookings[0].user.category %>
-        <% if category == 'fêtarde' %>
-        <i class="category fas fa-cocktail"></i>
-        <% elsif category == 'calme' %>
-        <i class="category fas fa-glass-whiskey"></i>
-        <% else %>
-        <i class="category fas fa-wine-glass-alt"></i>
-        <% end %>
+
+
+
+        <div class="latte-info">
+          <div class="stars">
+            <% trip.bookings[0].user.average_rating.times do  %>
+            <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+          <% category = trip.bookings[0].user.category %>
+          <% if category == 'fêtarde' %>
+          <i class="category fas fa-cocktail"></i>
+          <% elsif category == 'calme' %>
+          <i class="category fas fa-glass-whiskey"></i>
+          <% else %>
+          <i class="category fas fa-wine-glass-alt"></i>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
   <% end %>
 
 
@@ -50,15 +50,17 @@
   </button>
 
 </div>
-</div>
+
+
+
 
 
 <!-- Modal -->
 <div class="modal fade" id="cocoModal" tabindex="-1" role="dialog" aria-labelledby="cocoModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-
+    <div class="modal-content">
         <%= render "form", button_name: "Créer", method: :post, search: @search %>
-
+    </div>
   </div>
 </div>
 
