@@ -1,23 +1,30 @@
 <div class="container">
 
-  <% unless @creator_bookings == nil || @creator_bookings.first == nil %>
+  <% unless @creator_bookings.first == nil %>
+
+
     <h2 class="booking-title">Mon trajet</h2>
 
-    <div class="custom-card">
-      <% @creator_bookings.each do |booking| %>
-        <div class="latte">
-          <img src=<%= booking.user.photo %> class="avatar"/>
-          <a href="<%= my_booking_path(booking.id) %>" class="custom-card">
-          <div class="latte-content">
-            <p><%= booking.user.first_name %></p>
-            <span class="small"> Départ : <%= Time.at(booking.trip.start_time).strftime("%Hh%M") %></span>
-          </div>
 
+    <div class="custom-card">
+    <% @creator_bookings.each do |booking| %>
+      <div class="latte">
+        <img src=<%= booking.user.photo %> class="avatar"/>
+        <a href="<%= my_booking_path(booking.id) %>" class="custom-card">
+        <div class="latte-content">
+          <p><%= booking.user.first_name %></p>
+          <span class="small"> Départ : <%= Time.at(booking.trip.start_time).strftime("%Hh%M") %></span>
+        </div>
+        <div>
+        </div>
           <div class="latte-info">
             <div class="stars">
-            <%= link_to my_trip_path(booking.trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
+             <%= link_to my_trip_path(booking.trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
               <i class="fas fa-times"></i>
-            <% end %>
+             <% end %>
+            </div>
+            <div class="category">
+            <%= ("<i class='fas fa-cocktail'></i>" * (User.categories.index(booking.user.category) + 1)).html_safe %>
             </div>
           </div>
           </a>
@@ -58,7 +65,7 @@
 
 
 
-  <% unless @client_bookings == nil || @client_bookings.first == nil %>
+  <% unless @client_bookings.first == nil %>
 
     <h2 class="booking-title">Mes trajets en cours et passés</h2>
 

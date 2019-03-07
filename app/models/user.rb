@@ -14,6 +14,10 @@ class User < ApplicationRecord
   after_create :create_session_id
 
 
+  def self.categories
+    ["Calme", "Intermédiaire", "Fêtarde"]
+  end
+
   def create_session_id
     require "opentok"
     opentok = OpenTok::OpenTok.new('46278222', 'd3a9a4c0cc104cdae7dd05881ee18115d487fc5e')
