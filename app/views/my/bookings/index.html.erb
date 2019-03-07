@@ -1,7 +1,10 @@
 <div class="container">
-  <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes trajets créés</h2>
 
-  <% unless @creator_bookings == nil %>
+  <% unless @creator_bookings.first == nil %>
+
+    <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes trajets créés</h2>
+
+
   <div class="container custom-card">
     <% @creator_bookings.each do |booking| %>
 
@@ -28,10 +31,11 @@
   </div>
   <% end %>
 
-  <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes bookings à valider</h2>
 
 
-  <% unless @pending_bookings == nil %>
+  <% unless @pending_bookings.first == nil %>
+    <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes bookings à valider</h2>
+
   <div class="container custom-card">
     <% @pending_bookings.each do |pending_booking| %>
 
@@ -55,11 +59,11 @@
 
 
 
-  <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes trajets en cours et passés</h2>
 
 
-  <% unless @client_bookings == nil %>
+  <% unless @client_bookings.first == nil %>
 
+    <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes trajets en cours et passés</h2>
 
   <div class="container custom-card">
     <% @client_bookings.each do |client_booking| %>

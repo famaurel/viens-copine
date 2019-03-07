@@ -1,6 +1,7 @@
 class My::BookingsController < ApplicationController
 
   def index
+
     @trips = current_user.trips
     @creator_bookings = Booking.where(user_id: current_user.id, creator: true)
     @pending_bookings = []

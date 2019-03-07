@@ -9,10 +9,27 @@ class TripsController < ApplicationController
       @trips = Trip.where(start_address_id: start_addresses_ids,
                           end_address_id: end_addresses_ids,
                           transport: transport).where("start_time > ?", [(start_time) - (60*10)])
+
+
+      # @start_address = params[:search][:start_address]
+      # @end_address = params[:search][:end_address]
+      # @start_time = params[:search][:start_time][1].to_i
+      # @transport = params[:search][:transport][1]
+
+      @search = Search.new(
+        start_address: params[:search][:start_address],
+        end_address: params[:search][:end_address],
+        start_time: params[:search][:start_time][1].to_i,
+        transport: params[:search][:transport][1]
+      )
+
     else
       @trips = Trip.all
+      @search = Search.new
     end
   end
+
+
 
   def show
     @trip = Trip.find(params[:id])
@@ -29,6 +46,12 @@ class TripsController < ApplicationController
   end
 
   def search
+    @search = Search.new(
+        start_address: '',
+        end_address: current_user.address,
+        start_time: '',
+        transport: ''
+      )
   end
 
   def create
