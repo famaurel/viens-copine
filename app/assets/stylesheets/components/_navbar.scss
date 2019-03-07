@@ -10,7 +10,7 @@
 }
 
 .custom-toggler.navbar-toggler {
-    border-color: none;
+  border-color: none;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -19,12 +19,11 @@
 
 .modal-header{
   border: none;
-
+  padding-bottom: 0px;
   h2 {
     color:$purple;
     font-size: 18px;
-    padding-left: 20px;
-
+    padding-left: 10px;
   }
 }
 
@@ -41,20 +40,19 @@
 }
 
 .nav-modal-body{
-    a{
+  a {
     font-size: 16px;
     font-weight: bold;
     color:$gray;
     display: block;
-    padding: 0.25em 0em;
-    text-align: center;
+    padding: 0.25em 1em 0em 0em;
+    text-align: right;
     line-height: 24px;
   }
   img {
-    float:left;
     position:absolute;
-    left: 10%;
-    bottom: 30%;
+    left: 9%;
+    bottom: 20%;
   }
 
 }

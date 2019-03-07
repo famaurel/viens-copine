@@ -24,9 +24,9 @@
       </div>
       <div class="modal-body nav-modal-body">
       <% if user_signed_in? %>
-        <img src='<%= current_user.photo %>' class="avatar"/>
+        <img src='<%= current_user.photo %>' class="avatar-big"/>
         <%= link_to "Chercher un trajet", trips_search_path %>
-        <%= link_to "Mes trajets", my_bookings_path %>
+        <%= link_to "Mon tableau de bord", my_bookings_path %>
         <%= link_to "Déconnexion", destroy_user_session_path, :method => 'delete' %>
       <% else %>
         <%= link_to "Me connecter", new_user_session_path %>
