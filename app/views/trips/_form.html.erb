@@ -2,6 +2,9 @@
 
 <div class="form-display">
   <div class="form-container">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     <h2>Mon trajet</h2>
     <%= simple_form_for :search, url: trips_path, :method => method do |f| %>
     <div class="form-group">

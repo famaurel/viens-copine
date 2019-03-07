@@ -46,17 +46,24 @@
   <% end %>
 
 
-  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#testModal">Créer un trajet
+  <button type="button" class="btn btn-valid" data-toggle="modal" data-target="#cocoModal">Créer un trajet
   </button>
 
 </div>
 </div>
 
 
-
 <!-- Modal -->
-<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true">
+<div class="modal fade" id="cocoModal" tabindex="-1" role="dialog" aria-labelledby="cocoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
 
         <%= render "form", button_name: "Créer", method: :post, search: @search %>
 
+  </div>
 </div>
+
+
+
+
+
+
