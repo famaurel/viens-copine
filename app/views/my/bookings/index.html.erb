@@ -3,7 +3,7 @@
 
 <div class="container custom-card">
   <% @creator_bookings.each do |booking| %>
-
+  <a href="<%= my_booking_path(booking.id) %>" class>
     <div class="latte">
       <img src=<%= booking.user.photo %> class="avatar"/>
       <div class="latte-content">
@@ -25,6 +25,7 @@
         <i class="category <%= category_icon(booking.user.category) %>"></i>
       </div>
     </div>
+  </a>
   <% end %>
 
 </div>
