@@ -14,8 +14,32 @@
     <div class="latte">
       <img src=<%= %> class="avatar"/>
         <ul>
-          <li>Créatrice : <%= @booking %></li>
+          <li>Créatrice : <%= @booking.user.first_name %></li>
+          <li>Copines :
+            <% @bookings.drop(0).each do |booking| %>
+              <img src=<%= @booking.user.photo %> class="avatar-small"/>
+            <% end %>
           </li>
+          <li>Statut :
+            <% if @booking.state == "pending" %>
+            <%= "en attente" %>
+            <% else %>
+            <%= "validé" %>
+            <% end %>
+          </li>
+          <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
+          <li>Moyen de transport :
+            <% case  @booking.trip.transport %>
+            <% when "walk" %>
+              <i class="fas fa-walking"></i>
+            <% when "bike" %>
+              <i class="fas fa-bicycle"></i>
+            <% when "bus" %>
+              <i class="fas fa-bus"></i>
+            <% end %>
+          </li>
+
+
         </ul>
       </div>
       <%= link_to "Retour aux trajets", :back, class: "btn btn-valid-puple" %>
