@@ -64,18 +64,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <%#= simple_form_for :trip_infos, url: trips_path, method: :post do |f| %>
-        <%#= f.input :transport, collection: Trip.transports.keys %>
-        <%#= f.input :start_time, collection: [["15 min", 15], ["30 min", 30], ["45 min", 45]] %>
-        <%#= f.input :end_address %>
-
-
 
         <%= render "form", button_name: "Créer", method: :post %>
-
-
-
-
 
       </div>
       <div class="modal-footer">
