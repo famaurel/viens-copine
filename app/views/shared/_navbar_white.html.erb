@@ -2,7 +2,7 @@
   <a class="navbar-brand" href="
   <% if user_signed_in? %><%= trips_search_path %>
   <% else root_path %>
-  <% end %>">Viens copine</a>
+  <% end %>">Viens copine <i class="fas fa-map-marker-alt"></i></a>
   <button class="navbar-toggler custom-toggler" type="button" data-toggle="modal" data-target="#exampleModal" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,11 +13,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content nav-modal-content">
       <div class="modal-header">
+
+
+
+        <h2>Viens Copine <i class="fas fa-map-marker-alt"></i></h2>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body nav-modal-body">
+          <img src='<%= current_user.photo %>' class="avatar"/>
       <% if user_signed_in? %>
       <%= link_to "Chercher un trajet", trips_search_path %>
       <%= link_to "Mes trajets", my_bookings_path %>

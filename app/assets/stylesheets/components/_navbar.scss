@@ -19,6 +19,13 @@
 
 .modal-header{
   border: none;
+
+  h2 {
+    color:$purple;
+    font-size: 18px;
+    padding-left: 20px;
+
+  }
 }
 
 .close{
@@ -28,16 +35,28 @@
 
 .nav-modal-content{
   border-radius:10px!important;
+  display:flex;
+  justify-content: space-between;
+  position: relative;
 }
 
 .nav-modal-body{
-  a{
+    a{
     font-size: 16px;
     font-weight: bold;
-    color:$gray!important;
+    color:$gray;
     display: block;
     padding: 0.25em 0em;
+    text-align: center;
+    line-height: 24px;
   }
+  img {
+    float:left;
+    position:absolute;
+    left: 10px;
+    bottom: 30%;
+  }
+
 }
 
 .navbar-white{
