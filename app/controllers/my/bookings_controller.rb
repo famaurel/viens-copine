@@ -14,19 +14,21 @@ class My::BookingsController < ApplicationController
     @client_bookings = Booking.where(user_id: current_user.id, creator: false)
   end
 
-
- def show
+  def show
     @booking = Booking.find(params[:id])
-    # @start_address = {
-    #   lng: @booking.start_address.longitude,
-    #   lat: @booking.start_address.latitude
-    # }
-    # @end_address = {
-    #     lng: @bookingp.end_address.longitude,
-    #     lat: @booking.end_address.latitude
-    # }
-  end
+    @user = User.find(@booking.user_id)
+    @trip = Trip.find(@booking.trip_id)
+    @bookings = @trip.bookings
 
+    @start_address = {
+      lng: @trip.start_address.longitude,
+      lat: @trip.start_address.latitude
+    }
+    @end_address = {
+        lng: @trip.end_address.longitude,
+        lat: @trip.end_address.latitude
+    }
+  end
 
   def approve
     @booking = Booking.find(params[:id])
