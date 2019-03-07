@@ -34,8 +34,6 @@
           </li>
         </ul>
       </div>
-      <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
-
       <% if current_user.bookings.last == nil %>
         <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
         <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>
