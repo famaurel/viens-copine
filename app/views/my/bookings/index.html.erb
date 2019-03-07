@@ -4,9 +4,11 @@
   <% unless @creator_bookings == nil %>
   <div class="container custom-card">
     <% @creator_bookings.each do |booking| %>
+  </div>
+  <% end %>
+  <% end %>
 
-
-<div class="container custom-card">
+  <div class="container custom-card">
   <% @creator_bookings.each do |booking| %>
   <a href="<%= my_booking_path(booking.id) %>" class>
     <div class="latte">
@@ -29,8 +31,7 @@
     </div>
     </a>
     <% end %>
-</div>
-  <% end %>
+  </div>
 
   <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes bookings à valider</h2>
 
@@ -63,8 +64,6 @@
 
 
   <% unless @client_bookings == nil %>
-
-
   <div class="container custom-card">
     <% @client_bookings.each do |client_booking| %>
 
@@ -82,21 +81,9 @@
         </div>
       </div>
     <% end %>
+   <% end %>
 
   </div>
-
-
-
-
-    <ul>
-      <% @client_bookings.each do |client_booking| %>
-        <li>Depart : <%= Time.at(client_booking.trip.start_time).strftime("%Hh%M") %></li>
-        <li>Arrivée : <%= client_booking.trip.end_address.title %></li>
-        <li>Statut : <%= client_booking.state %></li>
-      <% end %>
-    </ul>
-
-  <% end %>
 </div>
 
 
