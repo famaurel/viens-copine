@@ -7,10 +7,11 @@
     <h2>Mon trajet</h2>
     <%= simple_form_for :search, url: trips_path, :method => method do |f| %>
     <div class="form-group">
-      <div>
-        <button class="btn btn-secondary do-geoloc" type="button" style="background-color: green"></button>
+        <p class="d-inline">Adresse de départ</p>
+      <div  class="d-flex justify-content-center">
+        <%= f.input :start_address, required: true, label: false, value: search.start_address %>
+        <button class="btn btn-secondary do-geoloc btn-geoloc" type="button"><i class="fas fa-map-marker-alt"></i></button>
       </div>
-      <%= f.input :start_address, required: true, label: 'Adresse de départ', value: search.start_address, class: "form-control" %>
       <%= f.label :query, "Adresse d'arrivée" %>
       <%= f.input_field :end_address, required: true, value: search.end_address, class: "form-control" %>
 

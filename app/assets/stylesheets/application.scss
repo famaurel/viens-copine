@@ -13,3 +13,11 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+.search_start_address{
+  width: 100%;
+  margin-bottom: 0px;
+  .form-control{
+    margin-bottom: 0px;
+  }
+}
