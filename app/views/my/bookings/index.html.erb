@@ -1,6 +1,7 @@
 <div class="container">
 
-  <% unless @creator_bookings.first == nil %>
+  <% unless @creator_bookings == nil || @creator_bookings.first == nil %>
+    <h2 class="booking-title">Mon trajet</h2>
 
   <div class="custom-card">
   <% @creator_bookings.each do |booking| %>
@@ -29,7 +30,7 @@
 
 
 
-  <% unless @pending_bookings.first == nil %>
+  <% unless @pending_bookings == nil || @pending_bookings.first == nil %>
     <h2 class="booking-title">Mes réservations</h2>
 
   <div class="custom-card">
@@ -64,7 +65,7 @@
 
 
 
-  <% unless @client_bookings.first == nil %>
+  <% unless @client_bookings == nil || @client_bookings.first == nil %>
 
     <h2 class="booking-title">Mes trajets en cours et passés</h2>
 
