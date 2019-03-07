@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :my do
     resources :trips, only: [:destroy]
-    resources :bookings, only: [:index, :create] do
+    resources :bookings, only: [:index, :show, :create] do
       member do
         patch :approve
       end
