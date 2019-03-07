@@ -3,7 +3,10 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const mapElement = document.getElementById('map');
 
+
+if (mapElement) {
  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+
 
 const dataEnd = JSON.parse(mapElement.dataset.end_address);
 const end = [ dataEnd.lng, dataEnd.lat ];
@@ -128,5 +131,5 @@ map.on('load', function() {
   });
 });
 getRoute(start, end);
-
+}
 
