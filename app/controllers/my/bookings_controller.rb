@@ -16,17 +16,15 @@ class My::BookingsController < ApplicationController
 
 
  def show
-    @trip = Trip.find(params[:id])
-    @start_address = {
-      lng: @trip.start_address.longitude,
-      lat: @trip.start_address.latitude
-    }
-    @end_address = {
-        lng: @trip.end_address.longitude,
-        lat: @trip.end_address.latitude
-    }
-
-    @bookings = @trip.bookings
+    @booking = Booking.find(params[:id])
+    # @start_address = {
+    #   lng: @booking.start_address.longitude,
+    #   lat: @booking.start_address.latitude
+    # }
+    # @end_address = {
+    #     lng: @bookingp.end_address.longitude,
+    #     lat: @booking.end_address.latitude
+    # }
   end
 
 
