@@ -6,10 +6,7 @@ class Trip < ApplicationRecord
   belongs_to :start_address, :class_name => 'Address'
   belongs_to :end_address, :class_name => 'Address'
 
-
   def creator
     self.bookings.find_by(creator: true).user
   end
-
-
 end
