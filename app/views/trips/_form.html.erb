@@ -1,10 +1,12 @@
 
-
 <div class="form-display">
   <div class="form-container">
     <h2>Mon trajet</h2>
     <%= simple_form_for :search, url: trips_path, :method => method do |f| %>
     <div class="form-group">
+<div>
+<button class="btn btn-secondary do-geoloc" type="button" style="background-color: green"></button>
+</div>
       <%= f.input :start_address, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
       <%= f.label :query, "Adresse d'arrivée" %>
       <%= f.input_field :end_address, required: true, value: current_user.address, class: "form-control" %>
@@ -61,9 +63,14 @@
 
 </div>
 
-<script>
 
-  navigator.geolocation.getCurrentPosition(function(location) {
+
+
+
+<script>
+(function (){
+  ('button.do-geoloc').click(function () {
+    navigator.geolocation.getCurrentPosition(function(location) {
   var lat = location.coords.latitude;
   var lng = location.coords.longitude;
   var latlng = lat + "," + lng;
@@ -73,6 +80,9 @@
       document.querySelector('.form-control').value = data.address;
     });
   });
+})
+})
+
 
   const labels = document.querySelectorAll('.my-label');
   labels.forEach((label) => {

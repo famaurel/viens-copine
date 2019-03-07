@@ -17,8 +17,7 @@
         <p><%= booking.user.first_name %></p>
         <span class="small"> Départ : <%= Time.at(booking.trip.start_time).strftime("%Hh%M") %></span>
       </div>
-      <div>
-      </div>
+
         <div class="latte-info">
           <div class="stars">
            <%= link_to my_trip_path(booking.trip), method: :delete, data: { confirm: "Supprimez ce trajet" } do %>
