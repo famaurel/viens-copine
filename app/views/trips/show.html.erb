@@ -20,7 +20,13 @@
               <img src=<%= booking.user.photo %> class="avatar-small"/>
             <% end %>
           </li>
-          <li>Statut : <%= @trip.bookings[0].state %></li>
+          <li>Statut :
+            <% if @trip.bookings[0].state == "pending" %>
+            <%= "en attente" %>
+            <% else %>
+            <%= "validé" %>
+            <% end %>
+          </li>
           <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
           <li>Moyen de transport :
             <% case @trip.transport %>
@@ -34,8 +40,6 @@
           </li>
         </ul>
       </div>
-      <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
-
       <% if current_user.bookings.last == nil %>
         <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
         <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>

@@ -5,7 +5,7 @@ class My::TripsController < ApplicationController
     user = current_user
     @trip = Trip.find(params[:id])
     @trip.destroy
-    redirect_to trips_path, notice: "Le trajet a été supprimé"
+    redirect_to trips_search_path, notice: "Le trajet a été supprimé"
   end
 
   def index
