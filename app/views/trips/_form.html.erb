@@ -7,11 +7,12 @@
 <div>
 <button class="btn btn-secondary do-geoloc" type="button" style="background-color: green"></button>
 </div>
-      <%= f.input :start_address, required: true, label: 'Adresse de départ', value: '', class: "form-control" %>
+      <%= f.input :start_address, required: true, label: 'Adresse de départ', value: search.start_address, class: "form-control" %>
       <%= f.label :query, "Adresse d'arrivée" %>
-      <%= f.input_field :end_address, required: true, value: current_user.address, class: "form-control" %>
+      <%= f.input_field :end_address, required: true, value: search.end_address, class: "form-control" %>
 
           <p>Je souhaite partir dans </p>
+
           <div class="trip">
             <input type="hidden" name="search[start_time][]" value="" class="inline">
             <div>
@@ -35,6 +36,7 @@
           </div>
 
           <p>Mode(s) de transport</p>
+
           <div class="trip">
             <input type="hidden" name="search[transport][]" value="" class="inline">
             <div >
