@@ -33,7 +33,7 @@
     <% end %>
   </div>
 
-  <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes bookings à valider</h2>
+  <h2 style='color:#3a1898; font-size:24px; font-weight:bold; padding: 2em 0em;'>Mes réservations</h2>
 
 
   <% unless @pending_bookings == nil %>
@@ -44,13 +44,21 @@
         <img src=<%= pending_booking.user.photo %> class="avatar"/>
         <div class="latte-content">
           <p><%= pending_booking.user.first_name %></p>
-          <span class="small"> Statut : <%= pending_booking.state %></span>
+          <span class="small"> Statut :
+            <% if pending_booking.state == "pending" %>
+            <%= "en attente" %>
+            <% else %>
+            <%= "validé" %>
+            <% end %>
+          </li>
         </div>
         <div>
         </div>
 
         <div class="latte-info">
-          <p data-pending_booking-button-id="<%= pending_booking.id %>"> <%= link_to "Approve", approve_my_booking_path(pending_booking), :method => :patch, remote: true, class: "btn btn-valid", style: "color:white" %></p>
+          <% if pending_booking.state == "pending" %>
+            <p data-pending_booking-button-id="<%= pending_booking.id %>"> <%= link_to "Confirmer", approve_my_booking_path(pending_booking), :method => :patch, remote: true, class: "btn btn-valid", style: "color:white" %></p>
+          <% end %>
         </div>
       </div>
     <% end %>
