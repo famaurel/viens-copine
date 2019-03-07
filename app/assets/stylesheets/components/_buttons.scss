@@ -88,10 +88,7 @@
     border: 1px solid white;
     width: 100%;
     margin-bottom:10px;
-
-
   }
-
 
 .btn-toolbar {
   margin-bottom: 15px;
@@ -104,4 +101,16 @@
   text-align: center;
   display: block;
   width: 100%;
+}
+
+.btn-geoloc {
+  border-top: 1px solid ced4da;
+  border-bottom: 1px solid ced4da;
+  border-right: 1px solid ced4da;
+  border-radius:0;
+  margin-left:-2px;
+
+  i {
+    color: $purple;
+  }
 }
