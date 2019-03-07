@@ -12,11 +12,11 @@
     <div class="btn-toolbar">
     </div>
     <div class="latte">
-      <img src=<%= %> class="avatar"/>
+      <img src=<%= @booking.user.photo%> class="avatar"/>
         <ul>
           <li>Créatrice : <%= @booking.user.first_name %></li>
           <li>Copines :
-            <% @bookings.drop(0).each do |booking| %>
+            <% @bookings.drop(1).each do |booking| %>
               <img src=<%= @booking.user.photo %> class="avatar-small"/>
             <% end %>
           </li>

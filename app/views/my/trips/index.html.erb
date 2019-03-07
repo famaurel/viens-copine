@@ -23,23 +23,6 @@
         <%= active_link_to "Noter ce trajet", new_booking_review_path(Booking.first), active: {progress: 2} %>
         <% end %>
       </div>
-
-
-      <div class="latte-info">
-        <div class="stars">
-          <% trip.bookings[0].user.average_rating.times do  %>
-          <i class="fas fa-star"></i>
-          <% end %>
-        </div>
-        <% category = trip.bookings[0].user.category %>
-        <% if category == 'fêtarde' %>
-        <i class="category fas fa-cocktail"></i>
-        <% elsif category == 'calme' %>
-        <i class="category fas fa-glass-whiskey"></i>
-        <% else %>
-        <i class="category fas fa-wine-glass-alt"></i>
-        <% end %>
-      </div>
     </div>
   </a>
   <% end %>

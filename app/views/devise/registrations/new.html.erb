@@ -23,6 +23,7 @@
    </div>
 
      <%= f.input :address, required: true %>
+     <%= f.input :category, collection: User.categories %>
      <div class="form-row">
        <div class="col">
          <%= f.input :password, required: true,
