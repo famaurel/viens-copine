@@ -12,32 +12,12 @@
     <div class="btn-toolbar">
     </div>
     <div class="latte">
-      <img src=<%= @trip.bookings[0].user.photo %> class="avatar"/>
+      <img src=<%= %> class="avatar"/>
         <ul>
-          <li>Créatrice : <%= @trip.bookings[0].user.first_name %></li>
-          <li>Copines :
-            <% @bookings.drop(1).each do |booking| %>
-              <img src=<%= booking.user.photo %> class="avatar-small"/>
-            <% end %>
-          </li>
-          <li>Statut : <%= @trip.bookings[0].state %></li>
-          <li>Départ à : <%= Time.at(@trip.start_time).strftime("%Hh%M") %></li>
-          <li>Moyen de transport :
-            <% case @trip.transport %>
-            <% when "walk" %>
-              <i class="fas fa-walking"></i>
-            <% when "bike" %>
-              <i class="fas fa-bicycle"></i>
-            <% when "bus" %>
-              <i class="fas fa-bus"></i>
-            <% end %>
+          <li>Créatrice : <%= @booking %></li>
           </li>
         </ul>
       </div>
-      <% if current_user.bookings.last == nil %>
-        <%= link_to "Rejoindre", trip_bookings_path(@trip.id), method: :post, class: "btn btn-valid" %>
-        <% elsif current_user.bookings.last.progress != "arrived" || @trip.user_ids.include?(current_user.id)%>
-      <% end %>
       <%= link_to "Retour aux trajets", :back, class: "btn btn-valid-puple" %>
     </div>
   </div>

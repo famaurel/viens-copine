@@ -1,7 +1,7 @@
 
 <div class="container custom-card">
   <% @trips.each do |trip| %>
-  <a href="<%= trip_path(trip.id) %>" class>
+  <a href="<%= trip_path(trip.id) %>">
     <div class="latte">
       <img src=<%= trip.bookings[0].user.photo %> class="avatar"/>
       <div class="latte-content">
