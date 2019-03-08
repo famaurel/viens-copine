@@ -21,3 +21,20 @@
     margin-bottom: 0px;
   }
 }
+
+.phone-alert-wrapper {
+  position: relative;
+}
+
+.phone-alert {
+  position: absolute;
+  bottom: -30px;
+  right: 45px;
+  i {
+    font-size: 60px;
+    color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 2px 2px 10px grey;
+  }
+}
