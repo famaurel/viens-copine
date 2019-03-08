@@ -23,6 +23,9 @@
         <% end %>
       </div>
       </a>
+      <div class="category">
+        <%= ("<i class='fas fa-cocktail'></i>" * (User.categories.index(trip.bookings[0].user.category) + 1)).html_safe %>
+      </div>
     </div>
   <% end %>
 

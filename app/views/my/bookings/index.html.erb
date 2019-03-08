@@ -23,9 +23,7 @@
               <i class="fas fa-times"></i>
              <% end %>
             </div>
-            <div class="category">
-              <%= ("<i class='fas fa-cocktail'></i>" * (User.categories.index(booking.user.category) + 1)).html_safe %>
-            </div>
+
           </div>
           </a>
         </div>
@@ -70,8 +68,10 @@
 
     <h2 class="booking-title">Mes trajets en cours et passés</h2>
 
+
     <div class="custom-card">
       <% @client_bookings.each do |client_booking| %>
+      <%= link_to my_booking_path(client_booking.id) do %>
         <div class="latte">
           <img src=<%= client_booking.user.photo %> class="avatar"/>
           <div class="latte-content">
@@ -85,7 +85,10 @@
             <span class="small" style="color:#8898aa; font-size:16px;"> Arrivée : <%= client_booking.trip.end_address.title %></span>
           </div>
         </div>
+        <% end %>
       <% end %>
+
+
     </div>
   <% end %>
 </div>
