@@ -14,7 +14,18 @@ class BookingsController < ApplicationController
       @hostname = ApplicationController.new.default_url_options[:host]
       @publisher_video_url = video_path + "?session_id=#{@session_id}&token=#{@publisher_token}"
       @subscriber_video_url = video_path + "?session_id=#{@session_id}&token=#{@subscriber_token}"
-      #UserMailer.booking(current_user, @trip, @subscriber_video_url).deliver_now
+
+
+
+
+      @booking.update(token: @subscriber_video_url)
+
+
+
+
+
+
+
       redirect_to @publisher_video_url
       send_sms_to_creator(@trip, @subscriber_video_url)
       flash[:notice] = "Vous avez bien rejoint le trip 🙂 attente de la copine pour le chat"
