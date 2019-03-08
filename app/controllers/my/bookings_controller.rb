@@ -19,6 +19,7 @@ class My::BookingsController < ApplicationController
     @user = User.find(@booking.user_id)
     @trip = Trip.find(@booking.trip_id)
     @bookings = @trip.bookings
+    @copines = @trip.bookings.select{|b| b.user != @user }.map(&:user)
 
     @start_address = {
       lng: @trip.start_address.longitude,
